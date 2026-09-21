@@ -28,7 +28,7 @@ keywords:
   - BOIN
   - Shiny
 url: "https://wguo3.shinyapps.io/bold_boin_phase1_app/"
-repository-code: "https://github.com/wguo3773/bold-boin-research-simulator"
+repository-code: "https://github.com/wguo3773/bold_boin_phase1_app"
 references:
   - type: article
     title: "Bayesian Ordered Lattice Design for Phase I Clinical Trials"
@@ -42,4 +42,3 @@ references:
     volume: 45
     issue: "6-7"
     doi: "10.1002/sim.70456"
-
