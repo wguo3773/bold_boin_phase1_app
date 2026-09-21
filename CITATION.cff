@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite this archived software release and the BOLD methods paper."
+title: "BOLD/BOIN Research Simulator"
+type: software
+version: 1.0.0
+date-released: 2026-09-21
+authors:
+  - family-names: Guo
+    given-names: Wanru
+    affiliation: "University of Maryland Greenebaum Comprehensive Cancer Center"
+  - family-names: Wang
+    given-names: Gi-Ming
+    affiliation: "Case Comprehensive Cancer Center, Case Western Reserve University"
+  - family-names: Tatsuoka
+    given-names: Curtis
+    affiliation: "University of Maryland School of Medicine"
+abstract: >-
+  An independent research Shiny application for comparing operating
+  characteristics of the Bayesian Ordered Lattice Design (BOLD) and the
+  Bayesian Optimal Interval (BOIN) design in a four-dose Phase I setting.
+  The software is intended for simulation and design review, not for live
+  clinical dose assignment.
+keywords:
+  - Phase I clinical trial
+  - maximum tolerated dose
+  - dose finding
+  - BOLD
+  - BOIN
+  - Shiny
+url: "https://wguo3.shinyapps.io/bold_boin_phase1_app/"
+repository-code: "https://github.com/wguo3773/bold-boin-research-simulator"
+references:
+  - type: article
+    title: "Bayesian Ordered Lattice Design for Phase I Clinical Trials"
+    authors:
+      - family-names: Wang
+        given-names: Gi-Ming
+      - family-names: Tatsuoka
+        given-names: Curtis
+    journal: "Statistics in Medicine"
+    year: 2026
+    volume: 45
+    issue: "6-7"
+    doi: "10.1002/sim.70456"
+

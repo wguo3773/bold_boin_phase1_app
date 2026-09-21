@@ -1,0 +1,307 @@
+:root {
+  --ink: #17212b;
+  --muted: #566573;
+  --line: #d8e0e6;
+  --paper: #ffffff;
+  --teal: #087f8c;
+  --orange: #c76d00;
+  --soft-teal: #e8f4f4;
+  --soft-gold: #fff5e8;
+}
+
+body {
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.navbar {
+  background: #20364a !important;
+  border: 0;
+  min-height: 58px;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+.navbar-nav .nav-link.active {
+  background: rgba(255, 255, 255, 0.13) !important;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.page-band {
+  background: #eef3f6;
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0 20px;
+}
+
+.content-wrap {
+  width: min(1380px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.page-band h2,
+.tab-content-pad h2 {
+  margin: 0 0 6px;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.lead-copy {
+  color: var(--muted);
+  font-size: 17px;
+  margin: 0 0 14px;
+}
+
+.notice {
+  background: var(--soft-teal);
+  border-left: 4px solid var(--teal);
+  padding: 10px 14px;
+  max-width: 980px;
+}
+
+.notice.warning {
+  background: var(--soft-gold);
+  border-left-color: var(--orange);
+  margin-bottom: 24px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(330px, 430px) minmax(600px, 1fr);
+  gap: 28px;
+  padding: 26px 0 48px;
+}
+
+.control-column {
+  border-right: 1px solid var(--line);
+  min-width: 0;
+  padding-right: 28px;
+}
+
+.result-column {
+  min-width: 0;
+}
+
+.result-column .shiny-html-output {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.control-column h3,
+.result-column h3,
+.tab-content-pad h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 8px 0 14px;
+}
+
+.step {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.step.large {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  font-size: 17px;
+}
+
+.input-grid,
+.dose-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 14px;
+}
+
+.scenario-input-list h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 10px 0 6px;
+}
+
+.scenario-input-row {
+  display: grid;
+  grid-template-columns: 40px repeat(4, minmax(0, 1fr));
+  align-items: end;
+  gap: 6px;
+  border-bottom: 1px solid var(--line);
+  padding: 5px 0;
+}
+
+.scenario-state {
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+.scenario-input-row .shiny-input-container {
+  width: 100% !important;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.scenario-input-row label {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.scenario-input-row .form-control {
+  width: 100%;
+  min-width: 0;
+  font-size: 13px;
+  padding: 5px;
+}
+
+.btn-reset {
+  margin: 10px 0 18px;
+}
+
+.form-group {
+  margin-bottom: 13px;
+}
+
+.input-grid > .shiny-input-container,
+.dose-inputs > .shiny-input-container {
+  min-width: 0;
+  width: 100% !important;
+}
+
+.input-grid label,
+.dose-inputs label {
+  display: block;
+  line-height: 1.2;
+  min-height: 34px;
+  white-space: normal;
+}
+
+.form-control,
+.selectize-input,
+.btn {
+  border-radius: 5px !important;
+}
+
+.input-grid .form-control,
+.dose-inputs .form-control {
+  width: 100%;
+}
+
+.btn-run {
+  width: 100%;
+  min-height: 44px;
+  background: var(--teal) !important;
+  border-color: var(--teal) !important;
+  color: #fff !important;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.result-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.run-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  margin-bottom: 8px;
+  border: 1px solid #a8d2d5;
+  background: var(--soft-teal);
+  color: #145d64;
+  border-radius: 5px;
+}
+
+.run-status.running {
+  background: var(--soft-gold);
+  border-color: #e6bd81;
+  color: #7a4600;
+}
+
+.table {
+  background: var(--paper);
+  border-top: 2px solid #20364a;
+  font-size: 14px;
+}
+
+.table thead th {
+  background: #e9eff3;
+  border-bottom: 1px solid #bac7d0;
+  color: var(--ink);
+  white-space: normal;
+}
+
+.tab-content-pad {
+  padding: 32px 0 52px;
+}
+
+.guide {
+  max-width: 980px;
+}
+
+.guide-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.guide-row h3 {
+  margin: 0 0 3px;
+}
+
+.guide-row p {
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 980px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .control-column {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 24px;
+  }
+}
+
+@media (max-width: 620px) {
+  .content-wrap {
+    width: min(100% - 24px, 1380px);
+  }
+  .input-grid,
+  .dose-inputs {
+    grid-template-columns: 1fr;
+  }
+  .result-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .table {
+    font-size: 10px;
+    table-layout: fixed;
+    width: 100% !important;
+  }
+  .table > :not(caption) > * > * {
+    overflow-wrap: anywhere;
+    padding: 4px 3px;
+    white-space: normal;
+  }
+}
