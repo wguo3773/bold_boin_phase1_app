@@ -1,5 +1,5 @@
 {
-  "title": "BOLD/BOIN Research Simulator",
+  "title": "Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator",
   "description": "An independent research Shiny application for comparing operating characteristics of the Bayesian Ordered Lattice Design (BOLD) and the Bayesian Optimal Interval (BOIN) design in a four-dose Phase I setting. The software is intended for simulation and design review, not for live clinical dose assignment. The BOLD method is described by Wang and Tatsuoka (2026), https://doi.org/10.1002/sim.70456. Live application: https://wguo3.shinyapps.io/bold_boin_phase1_app/.",
   "upload_type": "software",
   "creators": [
@@ -37,4 +37,3 @@
     }
   ]
 }
-

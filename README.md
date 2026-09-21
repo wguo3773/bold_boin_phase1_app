@@ -91,8 +91,10 @@ validated as a live clinical dose-assignment system.
 If you use this application, cite the archived software release and the BOLD
 methods paper. Citation metadata are provided in [`CITATION.cff`](CITATION.cff).
 
-Guo W, Wang G-M, Tatsuoka C. *BOLD/BOIN Research Simulator*. Version 1.0.0.
-2026. <https://wguo3.shinyapps.io/bold_boin_phase1_app/>.
+Guo W, Wang G-M, Tatsuoka C. *Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator*. Version 1.0.0.
+2026. Zenodo. <https://doi.org/10.5281/zenodo.22867493>.
+
+Live application: <https://wguo3.shinyapps.io/bold_boin_phase1_app/>.
 
 Wang G-M, Tatsuoka C. Bayesian Ordered Lattice Design for Phase I Clinical
 Trials. *Statistics in Medicine*. 2026;45(6-7):e70456.
