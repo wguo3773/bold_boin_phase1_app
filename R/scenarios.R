@@ -10,7 +10,7 @@ default_scenarios <- function(n_doses = 4L) {
       if (k > n_doses) return(seq(0.03, 0.15, length.out = n_doses))
       lower <- if (k > 1L) 0.10 * 0.5^rev(seq_len(k - 1L) - 1L) else numeric()
       upper <- if (k < n_doses) seq(0.40, 0.80, length.out = n_doses - k) else numeric()
-      pmax(0.001, c(lower, 0.25, upper))
+      pmax(0.001, c(lower, 0.30, upper))
     }, numeric(n_doses)))
     colnames(rates) <- paste0("dose_", seq_len(n_doses))
     return(data.frame(scenario = states,
@@ -28,10 +28,10 @@ default_scenarios <- function(n_doses = 4L) {
       "Dose 4 is the true MTD",
       "All available doses are below target"
     ),
-    dose_1 = c(0.45, 0.25, 0.10, 0.05, 0.03, 0.03),
-    dose_2 = c(0.50, 0.40, 0.25, 0.10, 0.05, 0.05),
-    dose_3 = c(0.55, 0.50, 0.40, 0.25, 0.10, 0.10),
-    dose_4 = c(0.60, 0.60, 0.50, 0.40, 0.25, 0.15),
+    dose_1 = c(0.45, 0.30, 0.10, 0.05, 0.05, 0.03),
+    dose_2 = c(0.50, 0.40, 0.30, 0.10, 0.10, 0.05),
+    dose_3 = c(0.55, 0.50, 0.40, 0.30, 0.20, 0.10),
+    dose_4 = c(0.60, 0.60, 0.50, 0.40, 0.30, 0.15),
     stringsAsFactors = FALSE
   )
 }

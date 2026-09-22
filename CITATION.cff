@@ -2,8 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite this archived software release and the BOLD methods paper."
 title: "Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator"
 type: software
-version: 1.1.0
-doi: "10.5281/zenodo.22888835"
+version: "2026-09-22-corrected-defaults"
 date-released: 2026-09-22
 authors:
   - family-names: Guo

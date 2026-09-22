@@ -1,6 +1,6 @@
 # Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator
 
-**Version 1.1.0** | Authors: Wanru Guo, Gi-Ming Wang, and Curtis Tatsuoka
+**Current app: defaults corrected September 22, 2026** | Authors: Wanru Guo, Gi-Ming Wang, and Curtis Tatsuoka
 
 [Open the public Shiny app](https://wguo3.shinyapps.io/bold_boin_phase1_app/)
 
@@ -41,7 +41,18 @@ Large runs may exceed hosted resource limits; use local R for extensive sensitiv
 
 This example concerns design evaluation for a proposed first-in-human CD229 CAR-T study, with doses of **0.5, 1, 2, and 4 million viable CAR-positive T cells/kg**. The study team's request emphasized evaluating the possibility that the highest available dose is the true MTD, while retaining cohort and sentinel safeguards. This is a scenario of interest, **not evidence that the highest dose is safe, a known MTD, or a widely established clinical belief**. The simulations do not model sentinel timing or delayed toxicity.
 
-To examine the revised highest-dose scenario, select four doses, start at Dose 1, choose the Dose 4 true-MTD scenario, and enter **(0.05, 0.10, 0.20, 0.30)**. Set target 0.30, cohorts of 3, maximum 18 patients, stable-dose stopping limit 12, cutoff 0.90, BOLD tau 0.50, prior means 0.30, and PESS 3 at every dose. Set 10,000 trials for greater Monte Carlo precision. This revised vector is **not** the app's original Dose 4 default `(0.03, 0.05, 0.10, 0.25)`.
+The app now defaults to **(0.05, 0.10, 0.20, 0.30)** for the Dose 4 true-MTD scenario. Each designated MTD in the Dose 1-4 scenarios has true DLT probability **0.30**, matching the default target. This is a deliberate simulation choice: in general, a true MTD can be the available dose closest to the target without matching it exactly.
+
+Use four doses, start at Dose 1, target 0.30, cohorts of 3, maximum 18 patients, stable-dose stopping limit 12, cutoff 0.90, BOLD tau 0.50, prior means 0.30, and PESS 3 at every dose. Set 10,000 trials for greater Monte Carlo precision. Both methods receive the same scenario truths. The app opens with a regenerated 500-trial analysis; the table below uses 10,000 trials and seed 20260920, so its percentages differ from the initial display. Changing the target does not automatically rewrite the scenario truths.
+
+| True state | Default DLT probabilities |
+|---|---|
+| No safe dose (<1) | 0.45, 0.50, 0.55, 0.60 |
+| Dose 1 | 0.30, 0.40, 0.50, 0.60 |
+| Dose 2 | 0.10, 0.30, 0.40, 0.50 |
+| Dose 3 | 0.05, 0.10, 0.30, 0.40 |
+| Dose 4 | 0.05, 0.10, 0.20, 0.30 |
+| All below target (>4) | 0.03, 0.05, 0.10, 0.15 |
 
 ### Selected results: Dose 2 through above Dose 4
 
@@ -51,18 +62,24 @@ This is a **selected subset** of a six-scenario, 10,000-trial-per-scenario analy
 
 | True state | True DLT probabilities | Original BOLD | Experimental BOLD | BOIN |
 |---|---|---:|---:|---:|
-| Dose 2 | 0.10, 0.25, 0.40, 0.50 | 44.13% | 45.11% | 44.56% |
-| Dose 3 | 0.05, 0.10, 0.25, 0.40 | 49.21% | 49.30% | 42.21% |
+| Dose 2 | 0.10, 0.30, 0.40, 0.50 | 44.56% | 46.64% | 42.38% |
+| Dose 3 | 0.05, 0.10, 0.30, 0.40 | 48.06% | 49.03% | 40.27% |
 | Dose 4 | 0.05, 0.10, 0.20, 0.30 | 60.64% | 57.37% | 50.83% |
 | All below target (>4) | 0.03, 0.05, 0.10, 0.15 | 93.49% | 90.15% | 85.34% |
 
-**Original BOLD had higher correct-selection rates than BOIN at Dose 3, Dose 4, and in the all-below-target scenario**, including a 9.81-percentage-point advantage at Dose 4. Dose 2 was essentially similar and slightly favored BOIN over original BOLD. For `>4`, success means selecting the highest available dose, not identifying an untested dose above Dose 4.
+**Original BOLD had higher correct-selection rates than BOIN at Dose 2, Dose 3, Dose 4, and in the all-below-target scenario** in this rerun. The advantages were 2.18, 7.79, 9.81, and 8.15 percentage points, respectively. For `>4`, success means selecting the highest available dose, not identifying an untested dose above Dose 4.
 
-The advantage is scenario-dependent: when all doses were too toxic, original BOLD correctly selected no dose in 39.77% of simulations versus 61.15% for BOIN; at true Dose 1, rates were 43.27% versus 50.40%. BOLD also allocated more patients above the designated MTD in some scenarios. Consider accuracy alongside safety, allocation, and sample size, not as universal superiority. Accuracy Monte Carlo standard errors are approximately 0.25-0.50 percentage points in this saved analysis.
+The advantage is scenario-dependent: when all doses were too toxic, original BOLD correctly selected no dose in 39.77% of simulations versus 61.15% for BOIN; at true Dose 1, rates were 44.33% versus 47.06%. At Dose 2, overdose allocation was 41.36% for original BOLD versus 21.84% for BOIN; at Dose 3, 29.05% versus 14.04%. Consider accuracy alongside safety, allocation, and sample size, not as universal superiority. Accuracy Monte Carlo standard errors are approximately 0.25-0.50 percentage points.
 
 **Experimental BOLD is a separate research variant**, not the published BOLD method and not an app option. It lowers the Dose 1 cutoff to 0.85 and changes tau from 0.50 to 0.49 after any DLT; other cutoffs remain 0.90. The app cannot reproduce this dynamic tau rule by setting a constant tau. This figure is a saved standalone analysis, not a new run of the current app. Labels use consistent rounding from the CSV (90.15% displays as 90.2%).
 
-Recreate the figure without rerunning simulations:
+Reproduce all 10,000-trial comparisons and the figure (the experimental engine is isolated from the app):
+
+```r
+source("docs/run_car_t.R")
+```
+
+Recreate only the figure from saved results:
 
 ```r
 source("docs/plot_car_t.R")
@@ -70,7 +87,7 @@ source("docs/plot_car_t.R")
 
 ## Methods and limitations
 
-See [METHODS_AUDIT.md](METHODS_AUDIT.md) for original source-parity checks and their limits. Version 1.1.0 adds configurable dose counts and BOLD priors, cutoffs, and stopping limits with regression tests; these are not independent clinical validation of all configurations. Prespecify and clinically justify simulation truths. Do not tune parameters solely to make one design outperform another.
+See [METHODS_AUDIT.md](METHODS_AUDIT.md) for original source-parity checks and their limits. The current app includes configurable dose counts and BOLD priors, cutoffs, and stopping limits with regression tests; these are not independent clinical validation of all configurations. Prespecify and clinically justify simulation truths. Do not tune parameters solely to make one design outperform another.
 
 Default scenario rates are assumptions, not patient estimates or values copied from the paper. Overdose allocation here means the proportion of simulated participants treated above the designated true MTD, not the observed DLT rate. The paper's upper delta refers to the dose above the MTD; separation from the dose below is different.
 
@@ -83,6 +100,8 @@ This app is not evidence of FDA approval or readiness for clinical deployment. R
 - [BOIN R package](https://cran.r-project.org/package=BOIN)
 - [MD Anderson BOIN app](https://biostatistics.mdanderson.org/shinyapps/BOIN/)
 
-Guo W, Wang G-M, Tatsuoka C. *Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator*. Version 1.1.0. Zenodo; 2026. [https://doi.org/10.5281/zenodo.22888835](https://doi.org/10.5281/zenodo.22888835). See [Zenodo's versioned record](https://doi.org/10.5281/zenodo.22867492) for all releases. Version 1.0.0 remains available at [its original DOI](https://doi.org/10.5281/zenodo.22867493).
+Guo W, Wang G-M, Tatsuoka C. *Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator*. Original archived release: Zenodo; 2026. [https://doi.org/10.5281/zenodo.22867493](https://doi.org/10.5281/zenodo.22867493).
+
+**Archive notice:** published archives predate the September 22 default correction and do not contain these regenerated results. For the current corrected app, also cite this GitHub repository with the exact commit used and access date. Do not describe the original DOI as containing the corrected software. No additional archived release was created for this correction.
 
 Wang G-M, Tatsuoka C. Bayesian Ordered Lattice Design for Phase I Clinical Trials. *Statistics in Medicine*. 2026;45(6-7):e70456. https://doi.org/10.1002/sim.70456.

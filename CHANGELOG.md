@@ -1,5 +1,13 @@
 # Changelog
 
+## Default correction - 2026-09-22
+
+- Designated MTD probabilities are now 0.30 at all in-range default states.
+- Dose 4 defaults to (0.05, 0.10, 0.20, 0.30).
+- Regenerated the app's 500-trial saved analysis and all 10,000-trial documentation comparisons.
+- Added standalone reproducible experimental-analysis code; it remains outside the app.
+- No new archived release. Existing archives predate these corrected defaults.
+
 ## 1.1.0 - 2026-09-22
 
 - Shared customizable dose count (2-10) and starting dose.

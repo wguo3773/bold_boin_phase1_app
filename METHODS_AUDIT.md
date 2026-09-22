@@ -34,4 +34,9 @@ and overdose-allocation trade-offs.
 
 ## Publication status
 
+September 22 default correction: default in-range MTD probabilities are 0.30,
+and Dose 4 uses (0.05, 0.10, 0.20, 0.30). The saved app analysis and documented
+three-method comparison were rerun. Earlier parity checks above used earlier
+scenario vectors. The original Zenodo archives do not contain this correction.
+
 This is an **independent research implementation**, not an official BOLD or MD Anderson BOIN app and not a validated clinical dose-assignment system. Before study or regulatory use, obtain study-team or institutional approval, confirm scenario and safety settings, and perform an independent statistical/code review. Public research hosting is configured at https://wguo3.shinyapps.io/bold_boin_phase1_app/.

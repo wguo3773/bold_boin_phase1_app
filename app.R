@@ -158,8 +158,8 @@ ui <- navbarPage(
       h2("True-DLT assumptions from the last run"),
       div(class = "notice warning", strong("Confirm before regulatory use."), " These are simulation scenarios, not estimates from real patients."),
       tableOutput("scenario_table"),
-      h3("About the default 0.15 separation"),
-      p("The paper defines upper delta as the gap from an MTD to the next higher dose. In the default Dose-4 scenario, the 0.15 separation instead refers to the gap to the dose below: 0.25 minus 0.10 equals 0.15. Edited rates may have a different gap."),
+      h3("Default scenario probabilities"),
+      p("The default target is 0.30, and each designated in-range MTD has true DLT probability 0.30. The Dose-4 default is (0.05, 0.10, 0.20, 0.30). The gap from Dose 3 to Dose 4 is 0.10. These are editable simulation assumptions, not observed patient rates; review them when changing the target."),
       p("For the <1 state, all doses exceed the target. For the above-range state, all available doses remain below target; selecting the highest available dose is treated as the operationally correct available-dose recommendation.")
     )
   ),
