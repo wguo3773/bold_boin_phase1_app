@@ -1,3 +1,18 @@
+bold_prior_parameters <- function(prior_mean, pess, n_doses) {
+  if (!is.numeric(prior_mean) || !length(prior_mean) %in% c(1L, n_doses) ||
+      any(!is.finite(prior_mean)) || any(prior_mean <= 0 | prior_mean >= 1) ||
+      any(diff(prior_mean) < 0)) {
+    stop("BOLD prior means must be between 0 and 1, non-decreasing across doses, and supplied for every dose (or as one common value).")
+  }
+  if (!is.numeric(pess) || !length(pess) %in% c(1L, n_doses) ||
+      any(!is.finite(pess)) || any(pess <= 0)) {
+    stop("BOLD PESS must be positive and supplied for every dose (or as one common value).")
+  }
+  q <- rep_len(prior_mean, n_doses)
+  m <- rep_len(pess, n_doses)
+  list(alpha = q * m, beta = (1 - q) * m)
+}
+
 choose_tied_dose <- function(loss, ppat, tau) {
   tied <- which(loss == min(loss, na.rm = TRUE))
   if (length(tied) == 1L) {
@@ -19,7 +34,12 @@ run_bold_trial <- function(
     gamma = 0.90,
     tau = 0.50,
     pess = 3,
-    start_dose = 1L) {
+    start_dose = 1L,
+    prior_mean = phi) {
+  if (length(start_dose) != 1L || !is.finite(start_dose) ||
+      start_dose != as.integer(start_dose) || start_dose < 1L || start_dose > length(true_dlt)) {
+    stop("Starting dose must be an integer within the available dose levels.")
+  }
   stopifnot(
     length(true_dlt) >= 2L,
     all(diff(true_dlt) >= 0),
@@ -29,8 +49,13 @@ run_bold_trial <- function(
   )
 
   j_max <- length(true_dlt)
-  alpha <- rep(phi * pess, j_max)
-  beta <- rep((1 - phi) * pess, j_max)
+  if (!is.numeric(gamma) || !length(gamma) %in% c(1L, j_max) ||
+      any(!is.finite(gamma)) || any(gamma <= 0 | gamma >= 1)) {
+    stop("BOLD toxicity cutoffs must be between 0 and 1, with one value per dose or one common value.")
+  }
+  prior <- bold_prior_parameters(prior_mean, pess, j_max)
+  alpha <- prior$alpha
+  beta <- prior$beta
   gamma <- rep_len(gamma, j_max)
   n_stop_per_dose <- rep_len(n_stop_per_dose, j_max)
 
@@ -144,7 +169,9 @@ simulate_bold_oc <- function(
     pess = 3,
     true_state = NULL,
     seed = 20260918L,
-    keep_trials = FALSE) {
+    keep_trials = FALSE,
+    start_dose = 1L,
+    prior_mean = phi) {
   set.seed(seed)
   j_max <- length(true_dlt)
   trial_rows <- vector("list", n_trial)
@@ -158,7 +185,9 @@ simulate_bold_oc <- function(
       n_stop_per_dose = n_stop_per_dose,
       gamma = gamma,
       tau = tau,
-      pess = pess
+      pess = pess,
+      start_dose = start_dose,
+      prior_mean = prior_mean
     )
     trial_rows[[i]] <- data.frame(
       trial = i,

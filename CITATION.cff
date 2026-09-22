@@ -2,9 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite this archived software release and the BOLD methods paper."
 title: "Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator"
 type: software
-version: 1.0.0
-doi: "10.5281/zenodo.22867493"
-date-released: 2026-09-21
+version: 1.1.0
+date-released: 2026-09-22
 authors:
   - family-names: Guo
     given-names: Wanru
@@ -18,7 +17,8 @@ authors:
 abstract: >-
   An independent research Shiny application for comparing operating
   characteristics of the Bayesian Ordered Lattice Design (BOLD) and the
-  Bayesian Optimal Interval (BOIN) design in a four-dose Phase I setting.
+  Bayesian Optimal Interval (BOIN) design with configurable dose levels,
+  BOLD priors and safety settings, and a four-dose CD229 CAR-T example.
   The software is intended for simulation and design review, not for live
   clinical dose assignment.
 keywords:

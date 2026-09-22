@@ -9,15 +9,36 @@ run_all_scenarios <- function(
     pess = 3,
     n_trial = 500L,
     seed = 20260918L,
-    methods = c("BOLD", "BOIN")) {
+    methods = c("BOLD", "BOIN"),
+    start_dose = 1L,
+    bold_stop_per_dose = n_stop_per_dose,
+    boin_require_stability = TRUE,
+    bold_prior_mean = phi,
+    bold_gamma = gamma) {
   validate_scenarios(scenarios, phi)
+  n_doses <- length(grep("^dose_[0-9]+$", names(scenarios)))
+  valid_cutoff <- function(x) is.numeric(x) && length(x) > 0L &&
+    all(is.finite(x)) && all(x > 0 & x < 1)
+  if (!valid_cutoff(gamma) || length(gamma) != 1L) {
+    stop("BOIN requires one shared toxicity cutoff between 0 and 1.")
+  }
+  if ("BOLD" %in% methods && (!valid_cutoff(bold_gamma) || !length(bold_gamma) %in% c(1L, n_doses))) {
+    stop("BOLD requires one toxicity cutoff per dose or one common cutoff, between 0 and 1.")
+  }
+  valid_limits <- function(x) is.numeric(x) && length(x) > 0L &&
+    all(is.finite(x)) && all(x >= 1 & x == floor(x))
+  if (!valid_limits(n_stop_per_dose) || length(n_stop_per_dose) != 1L ||
+      !valid_limits(bold_stop_per_dose) || !length(bold_stop_per_dose) %in% c(1L, n_doses)) {
+    stop("Stopping limits must be positive whole numbers: one shared limit and one BOLD limit per dose (or a common BOLD limit).")
+  }
   methods <- intersect(methods, c("BOLD", "BOIN"))
   if (!length(methods)) stop("Choose BOLD, BOIN, or both.")
+  if ("BOLD" %in% methods) bold_prior_parameters(bold_prior_mean, pess, n_doses)
 
   detail <- list()
   for (i in seq_len(nrow(scenarios))) {
     state <- scenarios$scenario[i]
-    true_dlt <- as.numeric(scenarios[i, paste0("dose_", 1:4)])
+    true_dlt <- as.numeric(scenarios[i, grep("^dose_[0-9]+$", names(scenarios)), drop = FALSE])
     scenario_seed <- seed + i * 1000L
 
     if ("BOLD" %in% methods) {
@@ -27,13 +48,15 @@ run_all_scenarios <- function(
         phi = phi,
         cohort_size = cohort_size,
         n_max = n_max,
-        n_stop_per_dose = n_stop_per_dose,
-        gamma = gamma,
+        n_stop_per_dose = bold_stop_per_dose,
+        gamma = bold_gamma,
         tau = tau,
         pess = pess,
+        prior_mean = bold_prior_mean,
         true_state = state,
         seed = scenario_seed,
-        keep_trials = TRUE
+        keep_trials = TRUE,
+        start_dose = start_dose
       )
     }
     if ("BOIN" %in% methods) {
@@ -46,8 +69,10 @@ run_all_scenarios <- function(
         n_stop_per_dose = n_stop_per_dose,
         gamma = gamma,
         true_state = state,
+        require_stability = boin_require_stability,
         seed = scenario_seed,
-        keep_trials = TRUE
+        keep_trials = TRUE,
+        start_dose = start_dose
       )
     }
   }
@@ -92,13 +117,19 @@ run_all_scenarios <- function(
 
   list(
     parameters = list(
+      n_doses = length(grep("^dose_[0-9]+$", names(scenarios))),
+      start_dose = start_dose,
       phi = phi,
       cohort_size = cohort_size,
       n_max = n_max,
       n_stop_per_dose = n_stop_per_dose,
+      bold_stop_per_dose = rep_len(bold_stop_per_dose, n_doses),
+      boin_require_stability = boin_require_stability,
       gamma = gamma,
+      bold_gamma = rep_len(bold_gamma, n_doses),
       tau = tau,
       pess = pess,
+      bold_prior_mean = rep_len(bold_prior_mean, n_doses),
       n_trial = n_trial,
       seed = seed
     ),

@@ -133,6 +133,10 @@ body {
   margin: 10px 0 6px;
 }
 
+.scenario-input-list {
+  overflow-x: auto;
+}
+
 .scenario-input-row {
   display: grid;
   grid-template-columns: 40px repeat(4, minmax(0, 1fr));

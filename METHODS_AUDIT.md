@@ -17,6 +17,21 @@ The default scenario probabilities are *assumptions for simulation*, not patient
 
 The local app reproduces operating-characteristic simulations only. It does not reproduce the authors' live-trial workflow, all BOLD dose lattices, informative priors, protocol generation, or every BOIN web-app option. The local overdose percentage is the share of simulated participants treated above the scenario's designated true MTD; it should not be conflated with other overdose metrics in the paper or BOIN app. The BOLD paper states a strict toxicity cutoff in prose; the authors' code uses `>= gamma`, which this app follows.
 
+## Version 1.1.0 extension checks
+
+The September 22, 2026 release adds variable dose count and starting dose,
+dose-specific BOLD prior means, PESS, toxicity cutoffs and stopping limits.
+Six regression suites in `tests/` passed, covering these inputs and equivalence
+of shared settings to identical per-dose vectors. These tests extend, but do
+not generalize, the earlier source-parity claims to every possible setting.
+BOIN now exposes matched stable-dose stopping and standard stopping explicitly.
+The earlier checks above describe the original tested configuration only.
+
+The README's upper-dose figure comes from a separate saved analysis with a
+revised Dose 4 vector. Experimental BOLD's dynamic tau rule is not in the app.
+Complete six-scenario summary data are included to disclose the lower-dose
+and overdose-allocation trade-offs.
+
 ## Publication status
 
-This is an **independent research implementation**, not an official BOLD or MD Anderson BOIN app and not a validated clinical dose-assignment system. Before distributing a public link for study or regulatory use, obtain study-team or institutional approval, confirm the scenario table and safety settings, and perform an independent statistical/code review. Public deployment also requires a configured hosting account; none was configured on the development machine at the time of this audit.
+This is an **independent research implementation**, not an official BOLD or MD Anderson BOIN app and not a validated clinical dose-assignment system. Before study or regulatory use, obtain study-team or institutional approval, confirm scenario and safety settings, and perform an independent statistical/code review. Public research hosting is configured at https://wguo3.shinyapps.io/bold_boin_phase1_app/.

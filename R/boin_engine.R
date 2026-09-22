@@ -8,7 +8,16 @@ simulate_boin_oc <- function(
     gamma = 0.90,
     true_state = NULL,
     seed = 20260918L,
-    keep_trials = FALSE) {
+    keep_trials = FALSE,
+    start_dose = 1L,
+    require_stability = TRUE) {
+  stopifnot(length(require_stability) == 1L, !is.na(require_stability), is.logical(require_stability),
+    length(n_stop_per_dose) == 1L, is.finite(n_stop_per_dose),
+    n_stop_per_dose >= 1, n_stop_per_dose == as.integer(n_stop_per_dose))
+  if (length(start_dose) != 1L || !is.finite(start_dose) ||
+      start_dose != as.integer(start_dose) || start_dose < 1L || start_dose > length(true_dlt)) {
+    stop("Starting dose must be an integer within the available dose levels.")
+  }
   if (!requireNamespace("BOIN", quietly = TRUE)) {
     stop("Install the BOIN package with install.packages('BOIN').")
   }
@@ -44,7 +53,7 @@ simulate_boin_oc <- function(
   for (trial in seq_len(n_trial)) {
     y <- integer(j_max)
     n <- integer(j_max)
-    current <- 1L
+    current <- as.integer(start_dose)
     eliminated <- integer(j_max)
 
     for (cohort in seq_len(n_cohort)) {
@@ -66,7 +75,7 @@ simulate_boin_oc <- function(
         (y[current] > b_escalate[n[current]] && y[current] < b_deescalate[n[current]]) ||
         (current == 1L && y[current] >= b_deescalate[n[current]]) ||
         ((current == j_max || eliminated[current + 1L] == 1L) && y[current] <= b_escalate[n[current]])
-      if (n[current] >= n_stop_per_dose && stable_at_current) break
+      if (n[current] >= n_stop_per_dose && (!require_stability || stable_at_current)) break
 
       if (y[current] <= b_escalate[n[current]] && current != j_max) {
         if (eliminated[current + 1L] == 0L) current <- current + 1L
