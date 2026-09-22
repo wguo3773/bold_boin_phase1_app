@@ -3,6 +3,7 @@ message: "If you use this software, please cite this archived software release a
 title: "Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator"
 type: software
 version: 1.1.0
+doi: "10.5281/zenodo.22888835"
 date-released: 2026-09-22
 authors:
   - family-names: Guo

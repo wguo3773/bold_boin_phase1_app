@@ -83,6 +83,6 @@ This app is not evidence of FDA approval or readiness for clinical deployment. R
 - [BOIN R package](https://cran.r-project.org/package=BOIN)
 - [MD Anderson BOIN app](https://biostatistics.mdanderson.org/shinyapps/BOIN/)
 
-Guo W, Wang G-M, Tatsuoka C. *Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator*. Version 1.1.0. 2026. See [Zenodo's versioned record](https://doi.org/10.5281/zenodo.22867492) for archived releases. Version 1.0.0 remains available at [its original DOI](https://doi.org/10.5281/zenodo.22867493).
+Guo W, Wang G-M, Tatsuoka C. *Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator*. Version 1.1.0. Zenodo; 2026. [https://doi.org/10.5281/zenodo.22888835](https://doi.org/10.5281/zenodo.22888835). See [Zenodo's versioned record](https://doi.org/10.5281/zenodo.22867492) for all releases. Version 1.0.0 remains available at [its original DOI](https://doi.org/10.5281/zenodo.22867493).
 
 Wang G-M, Tatsuoka C. Bayesian Ordered Lattice Design for Phase I Clinical Trials. *Statistics in Medicine*. 2026;45(6-7):e70456. https://doi.org/10.1002/sim.70456.
