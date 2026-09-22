@@ -54,14 +54,15 @@ Use four doses, start at Dose 1, target 0.30, cohorts of 3, maximum 18 patients,
 | Dose 4 | 0.05, 0.10, 0.20, 0.30 |
 | All below target (>4) | 0.03, 0.05, 0.10, 0.15 |
 
-### Selected results: Dose 2 through above Dose 4
+### Selected results: Dose 1 through above Dose 4
 
-![Selection accuracy for Dose 2 through all doses below target](docs/figures/mtd_selection_accuracy_upper_scenarios.png)
+![Selection accuracy for Dose 1 through all doses below target](docs/figures/mtd_selection_accuracy_upper_scenarios.png)
 
-This is a **selected subset** of a six-scenario, 10,000-trial-per-scenario analysis, not clinical outcomes. Complete results, including lower-dose scenarios, true DLT vectors, and overdose allocation, are in [the results CSV](docs/data/car_t_six_scenarios.csv).
+This is a **selected subset** of a six-scenario, 10,000-trial-per-scenario analysis, not clinical outcomes. Complete results, including the all-doses-too-toxic scenario, true DLT vectors, and overdose allocation, are in [the results CSV](docs/data/car_t_six_scenarios.csv).
 
 | True state | True DLT probabilities | Original BOLD | Experimental BOLD | BOIN |
 |---|---|---:|---:|---:|
+| Dose 1 | 0.30, 0.40, 0.50, 0.60 | 44.33% | 47.26% | 47.06% |
 | Dose 2 | 0.10, 0.30, 0.40, 0.50 | 44.56% | 46.64% | 42.38% |
 | Dose 3 | 0.05, 0.10, 0.30, 0.40 | 48.06% | 49.03% | 40.27% |
 | Dose 4 | 0.05, 0.10, 0.20, 0.30 | 60.64% | 57.37% | 50.83% |
