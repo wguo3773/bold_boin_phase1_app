@@ -1,0 +1,233 @@
+figure,scenario,endpoint,rates,category,method,display,percentage,mcse
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",No favored dose,BOIN,46.2 (0.50),46.2,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",No favored dose,iBOIN,54.7 (0.50),54.7,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",No favored dose,BOLD,44.45 (0.50),44.45,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",No favored dose,BOLD-exp,51.23 (0.50),51.23,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 1,BOIN,46.2 (0.50),46.2,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 1,iBOIN,54.9 (0.50),54.9,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 1,BOLD,49.65 (0.50),49.65,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 1,BOLD-exp,58.20 (0.49),58.20,0.49
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 2,BOIN,46.2 (0.50),46.2,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 2,iBOIN,52.3 (0.50),52.3,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 2,BOLD,41.98 (0.49),41.98,0.49
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 2,BOLD-exp,48.81 (0.50),48.81,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 3,BOIN,46.2 (0.50),46.2,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 3,iBOIN,54.7 (0.50),54.7,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 3,BOLD,44.84 (0.50),44.84,0.50
+word_01_scenario_1,1,Select Dose 1,"0.30, 0.40, 0.50, 0.60",Favor Dose 3,BOLD-exp,51.23 (0.50),51.23,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",No favored dose,BOIN,43.5 (0.50),43.5,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",No favored dose,iBOIN,47.5 (0.50),47.5,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",No favored dose,BOLD,49.48 (0.50),49.48,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",No favored dose,BOLD-exp,48.89 (0.50),48.89,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 1,BOIN,43.5 (0.50),43.5,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 1,iBOIN,49.4 (0.50),49.4,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 1,BOLD,48.41 (0.50),48.41,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 1,BOLD-exp,48.69 (0.50),48.69,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 2,BOIN,43.5 (0.50),43.5,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 2,iBOIN,53.6 (0.50),53.6,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 2,BOLD,56.01 (0.50),56.01,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 2,BOLD-exp,56.76 (0.50),56.76,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 3,BOIN,43.5 (0.50),43.5,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 3,iBOIN,47.4 (0.50),47.4,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 3,BOLD,47.68 (0.50),47.68,0.50
+word_02_scenario_2,2,Select Dose 2,"0.15, 0.30, 0.45, 0.60",Favor Dose 3,BOLD-exp,46.15 (0.50),46.15,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",No favored dose,BOIN,39.7 (0.49),39.7,0.49
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",No favored dose,iBOIN,50.5 (0.50),50.5,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",No favored dose,BOLD,51.10 (0.50),51.10,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",No favored dose,BOLD-exp,51.94 (0.50),51.94,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 1,BOIN,39.7 (0.49),39.7,0.49
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 1,iBOIN,46.5 (0.50),46.5,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 1,BOLD,49.03 (0.50),49.03,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 1,BOLD-exp,48.01 (0.50),48.01,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 2,BOIN,39.7 (0.49),39.7,0.49
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 2,iBOIN,45.4 (0.50),45.4,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 2,BOLD,46.64 (0.50),46.64,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 2,BOLD-exp,46.98 (0.50),46.98,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 3,BOIN,39.7 (0.49),39.7,0.49
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 3,iBOIN,52.0 (0.50),52.0,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 3,BOLD,57.19 (0.49),57.19,0.49
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 3,BOLD-exp,59.15 (0.49),59.15,0.49
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 4,BOIN,39.7 (0.49),39.7,0.49
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 4,iBOIN,49.4 (0.50),49.4,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 4,BOLD,49.85 (0.50),49.85,0.50
+word_03_scenario_3,3,Select Dose 3,"0.05, 0.15, 0.30, 0.45",Favor Dose 4,BOLD-exp,48.76 (0.50),48.76,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",No favored dose,BOIN,51.1 (0.50),51.1,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",No favored dose,iBOIN,52.6 (0.50),52.6,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",No favored dose,BOLD,60.17 (0.49),60.17,0.49
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",No favored dose,BOLD-exp,56.80 (0.50),56.80,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 1,BOIN,51.1 (0.50),51.1,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 1,iBOIN,52.6 (0.50),52.6,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 1,BOLD,59.30 (0.49),59.30,0.49
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 1,BOLD-exp,56.05 (0.50),56.05,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 2,BOIN,51.1 (0.50),51.1,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 2,iBOIN,52.6 (0.50),52.6,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 2,BOLD,58.83 (0.49),58.83,0.49
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 2,BOLD-exp,55.50 (0.50),55.50,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 3,BOIN,51.1 (0.50),51.1,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 3,iBOIN,50.9 (0.50),50.9,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 3,BOLD,53.72 (0.50),53.72,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 3,BOLD-exp,51.69 (0.50),51.69,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 4,BOIN,51.1 (0.50),51.1,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 4,iBOIN,53.8 (0.50),53.8,0.50
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 4,BOLD,62.03 (0.49),62.03,0.49
+word_04_scenario_4,4,Select Dose 4,"0.05, 0.10, 0.20, 0.30",Favor Dose 4,BOLD-exp,60.02 (0.49),60.02,0.49
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",No favored dose,BOIN,69.0 (0.46),69.0,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",No favored dose,iBOIN,70.5 (0.46),70.5,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",No favored dose,BOLD,82.35 (0.38),82.35,0.38
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",No favored dose,BOLD-exp,74.32 (0.44),74.32,0.44
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 1,BOIN,69.0 (0.46),69.0,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 1,iBOIN,70.5 (0.46),70.5,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 1,BOLD,80.44 (0.40),80.44,0.40
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 1,BOLD-exp,73.21 (0.44),73.21,0.44
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 2,BOIN,69.0 (0.46),69.0,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 2,iBOIN,70.5 (0.46),70.5,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 2,BOLD,80.80 (0.39),80.80,0.39
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 2,BOLD-exp,72.93 (0.44),72.93,0.44
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 3,BOIN,69.0 (0.46),69.0,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 3,iBOIN,69.6 (0.46),69.6,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 3,BOLD,77.89 (0.41),77.89,0.41
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 3,BOLD-exp,71.21 (0.45),71.21,0.45
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 4,BOIN,69.0 (0.46),69.0,0.46
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 4,iBOIN,71.2 (0.45),71.2,0.45
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 4,BOLD,83.39 (0.37),83.39,0.37
+word_05_scenario_5,5,Select Dose 4 (highest available),"0.05, 0.10, 0.15, 0.20",Favor Dose 4,BOLD-exp,76.04 (0.43),76.04,0.43
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",No favored dose,BOIN,61.7 (0.49),61.7,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",No favored dose,iBOIN,53.15 (0.50),53.15,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",No favored dose,BOLD,41.55 (0.49),41.55,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",No favored dose,BOLD-exp,43.65 (0.50),43.65,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 1,BOIN,61.7 (0.49),61.7,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 1,iBOIN,53.15 (0.50),53.15,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 1,BOLD,35.10 (0.48),35.10,0.48
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 1,BOLD-exp,36.95 (0.48),36.95,0.48
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 2,BOIN,61.7 (0.49),61.7,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 2,iBOIN,53.15 (0.50),53.15,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 2,BOLD,41.72 (0.49),41.72,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 2,BOLD-exp,43.65 (0.50),43.65,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 3,BOIN,61.7 (0.49),61.7,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 3,iBOIN,53.15 (0.50),53.15,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 3,BOLD,41.55 (0.49),41.55,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 3,BOLD-exp,43.65 (0.50),43.65,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 4,BOIN,61.7 (0.49),61.7,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 4,iBOIN,53.15 (0.50),53.15,0.50
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 4,BOLD,41.55 (0.49),41.55,0.49
+word_06_scenario_6,6,No dose recommended,"0.45, 0.55, 0.65, 0.75",Favor Dose 4,BOLD-exp,43.65 (0.50),43.65,0.50
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",No favored dose,BOIN,29.0 (0.45),29.0,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",No favored dose,iBOIN,28.8 (0.45),28.8,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",No favored dose,BOLD,46.20 (0.50),46.20,0.50
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",No favored dose,BOLD-exp,32.72 (0.47),32.72,0.47
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 1,BOIN,29.0 (0.45),29.0,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 1,iBOIN,28.8 (0.45),28.8,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 1,BOLD,45.02 (0.50),45.02,0.50
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 1,BOLD-exp,32.13 (0.47),32.13,0.47
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 2,BOIN,29.0 (0.45),29.0,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 2,iBOIN,28.8 (0.45),28.8,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 2,BOLD,45.30 (0.50),45.30,0.50
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 2,BOLD-exp,32.22 (0.47),32.22,0.47
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 3,BOIN,29.0 (0.45),29.0,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 3,iBOIN,28.1 (0.45),28.1,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 3,BOLD,41.18 (0.49),41.18,0.49
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 3,BOLD-exp,29.75 (0.46),29.75,0.46
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 4,BOIN,29.0 (0.45),29.0,0.45
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 4,iBOIN,29.7 (0.46),29.7,0.46
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 4,BOLD,47.93 (0.50),47.93,0.50
+word_07_scenario_7,7,Select Dose 4 (shallow gradient),"0.15, 0.20, 0.25, 0.30",Favor Dose 4,BOLD-exp,34.90 (0.48),34.90,0.48
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",No dose,BOIN,0.70 (0.08),0.70,0.08
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 1,BOIN,3.40 (0.18),3.40,0.18
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 2,BOIN,57.30 (0.49),57.30,0.49
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 3,BOIN,33.60 (0.47),33.60,0.47
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 4,BOIN,5.00 (0.22),5.00,0.22
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",No dose,iBOIN,0.02 (0.01),0.02,0.01
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 1,iBOIN,0.80 (0.09),0.80,0.09
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 2,iBOIN,44.30 (0.50),44.30,0.50
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 3,iBOIN,50.00 (0.50),50.00,0.50
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 4,iBOIN,4.90 (0.22),4.90,0.22
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",No dose,BOLD,0.00 (0.00),0.00,0.00
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 1,BOLD,0.68 (0.08),0.68,0.08
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 2,BOLD,49.19 (0.50),49.19,0.50
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 3,BOLD,45.43 (0.50),45.43,0.50
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 4,BOLD,4.70 (0.21),4.70,0.21
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",No dose,BOLD-exp,0.03 (0.02),0.03,0.02
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 1,BOLD-exp,0.46 (0.07),0.46,0.07
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 2,BOLD-exp,49.66 (0.50),49.66,0.50
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 3,BOLD-exp,44.18 (0.50),44.18,0.50
+word_08_scenario_8,8,Selection distribution (no favored dose),"0.05, 0.10, 0.45, 0.60",Dose 4,BOLD-exp,5.67 (0.23),5.67,0.23
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",No favored dose,BOIN,38.60 (0.49),38.60,0.49
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",No favored dose,iBOIN,54.90 (0.50),54.90,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",No favored dose,BOLD,50.13 (0.50),50.13,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",No favored dose,BOLD-exp,49.85 (0.50),49.85,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 1,BOIN,38.60 (0.49),38.60,0.49
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 1,iBOIN,48.20 (0.50),48.20,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 1,BOLD,46.00 (0.50),46.00,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 1,BOLD-exp,44.45 (0.50),44.45,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 2,BOIN,38.60 (0.49),38.60,0.49
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 2,iBOIN,45.30 (0.50),45.30,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 2,BOLD,41.87 (0.49),41.87,0.49
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 2,BOLD-exp,44.79 (0.50),44.79,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 3,BOIN,38.60 (0.49),38.60,0.49
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 3,iBOIN,54.90 (0.50),54.90,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 3,BOLD,54.30 (0.50),54.30,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 3,BOLD-exp,59.83 (0.49),59.83,0.49
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 4,BOIN,38.60 (0.49),38.60,0.49
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 4,iBOIN,54.80 (0.50),54.80,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 4,BOLD,50.16 (0.50),50.16,0.50
+word_09_scenario_8,8,Above-target selection (Dose 3 or 4),"0.05, 0.10, 0.45, 0.60",Favor Dose 4,BOLD-exp,49.85 (0.50),49.85,0.50
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",No dose,BOIN,27.12 (0.44),27.12,0.44
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 1,BOIN,33.81 (0.47),33.81,0.47
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 2,BOIN,16.77 (0.37),16.77,0.37
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 3,BOIN,12.22 (0.33),12.22,0.33
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 4,BOIN,10.08 (0.30),10.08,0.30
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",No dose,BOLD,10.51 (0.31),10.51,0.31
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 1,BOLD,24.37 (0.43),24.37,0.43
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 2,BOLD,18.59 (0.39),18.59,0.39
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 3,BOLD,17.91 (0.38),17.91,0.38
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 4,BOLD,28.62 (0.45),28.62,0.45
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",No dose,BOLD-exp,12.66 (0.33),12.66,0.33
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 1,BOLD-exp,37.90 (0.49),37.90,0.49
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 2,BOLD-exp,20.60 (0.40),20.60,0.40
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 3,BOLD-exp,17.23 (0.38),17.23,0.38
+word_10_scenario_9,9,Selection distribution (no favored dose),"0.30, 0.30, 0.30, 0.30",Dose 4,BOLD-exp,11.61 (0.32),11.61,0.32
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",No favored dose,BOIN,72.88 (0.44),72.88,0.44
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",No favored dose,BOLD,89.49 (0.31),89.49,0.31
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",No favored dose,BOLD-exp,87.34 (0.33),87.34,0.33
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 1,BOIN,72.88 (0.44),72.88,0.44
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 1,BOLD,91.72 (0.28),91.72,0.28
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 1,BOLD-exp,90.10 (0.30),90.10,0.30
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 2,BOIN,72.88 (0.44),72.88,0.44
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 2,BOLD,89.32 (0.31),89.32,0.31
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 2,BOLD-exp,87.34 (0.33),87.34,0.33
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 3,BOIN,72.88 (0.44),72.88,0.44
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 3,BOLD,89.49 (0.31),89.49,0.31
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 3,BOLD-exp,87.34 (0.33),87.34,0.33
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 4,BOIN,72.88 (0.44),72.88,0.44
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 4,BOLD,89.49 (0.31),89.49,0.31
+word_11_scenario_9,9,Select any dose 1-4 (all at target),"0.30, 0.30, 0.30, 0.30",Favor Dose 4,BOLD-exp,87.34 (0.33),87.34,0.33
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",No favored dose,BOIN,94.75 (0.22),94.75,0.22
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",No favored dose,BOLD,98.99 (0.10),98.99,0.10
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",No favored dose,BOLD-exp,96.22 (0.19),96.22,0.19
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 1,BOIN,94.75 (0.22),94.75,0.22
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 1,BOLD,98.60 (0.12),98.60,0.12
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 1,BOLD-exp,95.89 (0.20),95.89,0.20
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 2,BOIN,94.75 (0.22),94.75,0.22
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 2,BOLD,98.65 (0.12),98.65,0.12
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 2,BOLD-exp,95.91 (0.20),95.91,0.20
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 3,BOIN,94.75 (0.22),94.75,0.22
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 3,BOLD,98.78 (0.11),98.78,0.11
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 3,BOLD-exp,96.08 (0.19),96.08,0.19
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 4,BOIN,94.75 (0.22),94.75,0.22
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 4,BOLD,99.06 (0.10),99.06,0.10
+word_12_scenario_10,10,Select Dose 4 (highest available),"0.05, 0.05, 0.05, 0.05",Favor Dose 4,BOLD-exp,96.31 (0.19),96.31,0.19
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",No favored dose,BOIN,99.19 (0.09),99.19,0.09
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",No favored dose,BOLD,100.00 (0.00),100.00,0.00
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",No favored dose,BOLD-exp,99.99 (0.01),99.99,0.01
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 1,BOIN,99.19 (0.09),99.19,0.09
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 1,BOLD,99.99 (0.01),99.99,0.01
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 1,BOLD-exp,99.98 (0.01),99.98,0.01
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 2,BOIN,99.19 (0.09),99.19,0.09
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 2,BOLD,100.00 (0.00),100.00,0.00
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 2,BOLD-exp,99.99 (0.01),99.99,0.01
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 3,BOIN,99.19 (0.09),99.19,0.09
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 3,BOLD,100.00 (0.00),100.00,0.00
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 3,BOLD-exp,99.99 (0.01),99.99,0.01
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 4,BOIN,99.19 (0.09),99.19,0.09
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 4,BOLD,100.00 (0.00),100.00,0.00
+word_13_scenario_10,10,Select any dose 1-4 (all below target),"0.05, 0.05, 0.05, 0.05",Favor Dose 4,BOLD-exp,99.99 (0.01),99.99,0.01
