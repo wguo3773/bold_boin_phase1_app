@@ -1,5 +1,16 @@
 # Changelog
 
+## Development candidate - 2026-09-23
+
+- Nine protocol scenarios (1-7, 9, 10), replacing the six-scenario example.
+- Explicit target-dose, highest-dose, no-dose and any-dose endpoints.
+- Independent iBOIN implementation with dose-specific prior inputs and
+  uniform-prior safety cutoff applied during allocation and final selection.
+- Documented official iBOIN web-app safety discrepancy; old percentages not reused.
+- BOLD-exp now means constant tau .49 only, with all other BOLD settings unchanged.
+- Fresh 10,000-trial tables and nine-panel figure; all dose selections and safety results included.
+- Local app candidate only until the independent-method interpretation is accepted.
+
 ## Default correction - 2026-09-22
 
 - Designated MTD probabilities are now 0.30 at all in-range default states.

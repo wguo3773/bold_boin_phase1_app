@@ -1,5 +1,19 @@
 # Methods and deployment audit
 
+## September 23 development candidate
+
+The candidate adds nine protocol scenarios (1-7, 9, 10), an independent iBOIN
+implementation, and BOLD-exp with constant tau .49 only. All new comparisons
+are freshly simulated locally at shared cutoff .90. See
+[iBOIN verification](docs/IBOIN_VALIDATION.md) for the official-web-app safety
+discrepancy and the exact independent implementation choices. Earlier
+web-app iBOIN percentages are not certified matched-cutoff results.
+
+The candidate is not yet deployed or archived. The historical checks below
+apply only to the versions/settings they describe. The old dynamic-tau
+experimental comparison is superseded by the new protocol figure, but its
+historical files are retained for provenance.
+
 ## Sources checked
 
 - BOLD paper: <https://pmc.ncbi.nlm.nih.gov/articles/PMC12960292/>

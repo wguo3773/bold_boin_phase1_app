@@ -14,7 +14,10 @@ run_all_scenarios <- function(
     bold_stop_per_dose = n_stop_per_dose,
     boin_require_stability = TRUE,
     bold_prior_mean = phi,
-    bold_gamma = gamma) {
+    bold_gamma = gamma,
+    iboin_prior_mean = phi,
+    iboin_pess = 3L,
+    iboin_use_prior = TRUE) {
   validate_scenarios(scenarios, phi)
   n_doses <- length(grep("^dose_[0-9]+$", names(scenarios)))
   valid_cutoff <- function(x) is.numeric(x) && length(x) > 0L &&
@@ -31,18 +34,19 @@ run_all_scenarios <- function(
       !valid_limits(bold_stop_per_dose) || !length(bold_stop_per_dose) %in% c(1L, n_doses)) {
     stop("Stopping limits must be positive whole numbers: one shared limit and one BOLD limit per dose (or a common BOLD limit).")
   }
-  methods <- intersect(methods, c("BOLD", "BOIN"))
+  methods <- intersect(methods, c("BOLD", "BOIN", "iBOIN", "BOLD-exp"))
   if (!length(methods)) stop("Choose BOLD, BOIN, or both.")
   if ("BOLD" %in% methods) bold_prior_parameters(bold_prior_mean, pess, n_doses)
 
   detail <- list()
   for (i in seq_len(nrow(scenarios))) {
-    state <- scenarios$scenario[i]
+    label <- scenarios$scenario[i]
+    state <- if ("true_state" %in% names(scenarios)) scenarios$true_state[i] else label
     true_dlt <- as.numeric(scenarios[i, grep("^dose_[0-9]+$", names(scenarios)), drop = FALSE])
     scenario_seed <- seed + i * 1000L
 
-    if ("BOLD" %in% methods) {
-      detail[[paste(state, "BOLD", sep = "::")]] <- simulate_bold_oc(
+    for (bold_method in intersect(methods,c("BOLD","BOLD-exp"))) {
+      detail[[paste(label, bold_method, sep = "::")]] <- simulate_bold_oc(
         true_dlt = true_dlt,
         n_trial = n_trial,
         phi = phi,
@@ -50,7 +54,7 @@ run_all_scenarios <- function(
         n_max = n_max,
         n_stop_per_dose = bold_stop_per_dose,
         gamma = bold_gamma,
-        tau = tau,
+        tau = if(bold_method=="BOLD-exp") .49 else tau,
         pess = pess,
         prior_mean = bold_prior_mean,
         true_state = state,
@@ -58,9 +62,10 @@ run_all_scenarios <- function(
         keep_trials = TRUE,
         start_dose = start_dose
       )
+      detail[[paste(label,bold_method,sep="::")]]$method <- bold_method
     }
     if ("BOIN" %in% methods) {
-      detail[[paste(state, "BOIN", sep = "::")]] <- simulate_boin_oc(
+      detail[[paste(label, "BOIN", sep = "::")]] <- simulate_boin_oc(
         true_dlt = true_dlt,
         n_trial = n_trial,
         phi = phi,
@@ -74,6 +79,24 @@ run_all_scenarios <- function(
         keep_trials = TRUE,
         start_dose = start_dose
       )
+    }
+    if ("iBOIN" %in% methods) {
+      detail[[paste(label,"iBOIN",sep="::")]] <- simulate_iboin_oc(
+        true_dlt=true_dlt,n_trial=n_trial,phi=phi,cohort_size=cohort_size,
+        n_max=n_max,n_stop_per_dose=n_stop_per_dose,gamma=gamma,true_state=state,
+        seed=scenario_seed,keep_trials=TRUE,start_dose=start_dose,
+        require_stability=boin_require_stability,prior_mean=iboin_prior_mean,
+        pess=iboin_pess,use_prior=iboin_use_prior)
+    }
+    for(method in methods) {
+      key <- paste(label,method,sep="::")
+      fit <- detail[[key]]
+      if("endpoint" %in% names(scenarios) && scenarios$endpoint[i]=="Any dose 1-4")
+        fit$accuracy <- mean(fit$trials$selected>0)
+      # Use the actual truth, including tied and flat scenarios, for overdose allocation.
+      overdose_cols <- paste0("n_dose",seq_len(n_doses))[true_dlt>phi]
+      fit$overdose_rate <- sum(as.matrix(fit$trials[,overdose_cols,drop=FALSE]))/sum(fit$trials$total_n)
+      detail[[key]] <- fit
     }
   }
 
@@ -130,6 +153,10 @@ run_all_scenarios <- function(
       tau = tau,
       pess = pess,
       bold_prior_mean = rep_len(bold_prior_mean, n_doses),
+      iboin_prior_mean = rep_len(iboin_prior_mean,n_doses),
+      iboin_pess = rep_len(iboin_pess,n_doses),
+      iboin_use_prior = iboin_use_prior,
+      methods = methods,
       n_trial = n_trial,
       seed = seed
     ),

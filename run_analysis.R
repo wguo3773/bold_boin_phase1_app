@@ -1,10 +1,11 @@
 source(file.path("R", "bold_engine.R"))
 source(file.path("R", "boin_engine.R"))
+source(file.path("R", "iboin_engine.R"))
 source(file.path("R", "scenarios.R"))
 source(file.path("R", "analysis_utils.R"))
 
 result <- run_all_scenarios(
-  scenarios = default_scenarios(),
+  scenarios = protocol_scenarios(),
   phi = 0.30,
   cohort_size = 3,
   n_max = 18,
@@ -14,7 +15,7 @@ result <- run_all_scenarios(
   pess = 3,
   n_trial = 500,
   seed = 20260918,
-  methods = c("BOLD", "BOIN")
+  methods = c("BOLD", "BOIN", "iBOIN")
 )
 
 tables <- format_result_tables(result)
