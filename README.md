@@ -1,108 +1,107 @@
 # Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator
 
-**Current app: defaults corrected September 22, 2026** | Authors: Wanru Guo, Gi-Ming Wang, and Curtis Tatsuoka
+Authors: **Wanru Guo, Gi-Ming Wang, and Curtis Tatsuoka**
 
-[Open the public Shiny app](https://wguo3.shinyapps.io/bold_boin_phase1_app/)
+[Public Shiny app](https://wguo3.shinyapps.io/bold_boin_phase1_app/) | [Methods audit](METHODS_AUDIT.md)
 
-Research software for comparing BOLD and BOIN through simulated Phase I trials. No real patient data are required. This is an independent implementation, not the MD Anderson BOIN app or a validated live clinical dose-assignment system.
+Independent research software for BOLD, BOIN and iBOIN simulations. This is **not an official authors' or MD Anderson app**, and is not a validated clinical dose-assignment system. No real patient data are required.
+
+**September 23 development update:** nine protocol scenarios and an independent iBOIN implementation are being validated. The public app and existing Zenodo archive may still contain the preceding version; see the publication status in the methods audit.
 
 ## General use
 
-1. Open **Run simulation** and choose the number of dose levels (2-10) and starting dose. Both methods use these settings.
-2. Choose all scenarios or a single scenario. Enter nondecreasing **true DLT probabilities** for every dose. These are hypothetical simulation truths, not prior beliefs supplied to either algorithm. Inspect and edit generated example scenarios, especially after changing the dose count or target.
-3. Set the shared target DLT rate, cohort size, maximum patients, stopping limit, toxicity cutoff, number of simulation trials, and random seed.
-4. Set BOLD's PPAT selection target `tau` (default 0.50) and common prior effective sample size (PESS, default 3).
-5. Optionally check the BOLD dose-specific customization boxes and enter prior means, PESS, toxicity cutoffs, or stopping limits for each dose. **Checked: per-dose entries override that BOLD default. Unchecked: BOLD returns to the common default.** BOIN continues to use the shared stopping limit and toxicity cutoff.
-6. Select BOIN's stopping mode. The matched/stable-dose mode stops at the per-dose limit only when the next recommendation remains at that dose; the standard mode stops when the limit is reached. Report the selected mode with results.
-7. Click **Run comparison**. Review accuracy, dose-selection percentages, sample size and its SD, DLT counts, and overdose allocation. Download the CSV bundle, including scenario definitions and design parameters. Results describe the last completed run; rerun after changing inputs.
+1. Choose the number of doses (2-10), starting dose, scenarios and methods. Four-dose defaults use the protocol scenarios below. Other dose counts use illustrative editable scenarios.
+2. Enter nondecreasing true DLT probabilities. These generate simulated outcomes; the methods do not know them. They are different from prior means.
+3. Set the target DLT probability, cohort size, total patient maximum, per-dose stopping limit, toxicity cutoff, trial count and seed. The matched stopping rule requires reaching the dose limit **and** recommending that same dose again.
+4. Set BOLD's tau, prior means and PESS. Checked dose-specific controls override the corresponding common BOLD values. BOIN/iBOIN retain the shared cutoff and stopping limit.
+5. For iBOIN, set its separate prior means and **integer PESS**, optionally by dose. Prior means default to the target, PESS to 3. Its final-selection prior option defaults to on. BOIN has no favored-dose prior. iBOIN PESS 0 at every dose reduces to the implemented BOIN rules.
+6. Optionally include BOLD-exp: **constant tau 0.49**, with all other BOLD settings unchanged. This replaces the older experimental rule that changed Dose 1's cutoff and switched tau after a DLT. It is a research sensitivity analysis, not the published BOLD method.
+7. Run the comparison. Review the named endpoint, MCSE, full selection distribution, patient allocation, DLT count and overdose allocation. Download the CSV bundle for inputs and outputs. Edited inputs do not change an already displayed result until rerun.
 
-BOLD's prior is `Beta(m_j * q_j, m_j * (1 - q_j))`. Here `q_j` is the anticipated DLT probability and `m_j` is prior information weight, not a number of actual patients to enroll. Actual enrollment is controlled by cohort size. With customization off, prior means equal the target DLT rate. These are weak target-centered priors, not literally information-free priors.
+With defaults, BOLD's prior is Beta(0.9,2.1): prior mean 0.30 and PESS 3. Favoring a dose by increasing PESS does not change the actual cohort size. These are weak priors, not an absence of prior information.
 
-The target DLT rate, BOLD's PPAT target, and toxicity-exclusion cutoff are different quantities. BOIN retains its decision boundaries and separate Bayesian safety check; it does not use BOLD's priors. Input validation does not replace statistical review.
+### iBOIN implementation and safety
+
+This repository implements the published prior-weight and decision-boundary equations, with prior-augmented final estimates, inverse-variance isotonic regression, and the BOIN tie convention. **The uniform Beta(1,1) safety check uses the selected shared cutoff at every dose, during allocation and at final selection.** Safety exclusions override final-selection priors. This is an explicit matched-safety implementation, not a claim of exact MD Anderson web-app equivalence.
+
+Earlier official-web-app iBOIN results are **not reused as matched-0.90 results**. During verification, the app's decision table and simulation/final-selection behavior did not agree on safety handling. See the [audit](docs/IBOIN_VALIDATION.md). Exact flat truths are supported locally without perturbing their probabilities.
 
 ### Run locally
-
-From this repository folder in R:
 
 ```r
 install.packages(c("shiny", "bslib", "ggplot2", "Iso", "BOIN"))
 shiny::runApp()
 ```
 
-Run regression checks with:
+From the repository directory, run tests and reproduce the protocol comparison:
 
 ```r
 for (f in list.files("tests", pattern = "[.]R$", full.names = TRUE)) source(f)
+source("docs/run_protocol.R")  # 10,000 trials per scenario and method
+source("docs/plot_protocol.R") # rebuild figure/table from saved CSVs only
 ```
-
-Large runs may exceed hosted resource limits; use local R for extensive sensitivity analyses.
 
 ## CD229 CAR-T design example
 
-This example concerns design evaluation for a proposed first-in-human CD229 CAR-T study, with doses of **0.5, 1, 2, and 4 million viable CAR-positive T cells/kg**. The study team's request emphasized evaluating the possibility that the highest available dose is the true MTD, while retaining cohort and sentinel safeguards. This is a scenario of interest, **not evidence that the highest dose is safe, a known MTD, or a widely established clinical belief**. The simulations do not model sentinel timing or delayed toxicity.
+These are **hypothetical protocol stress tests**, not CD229 toxicity estimates or clinical validation. The four dose levels are 0.5, 1, 2 and 4 million viable CAR-positive T cells/kg. Interest in a higher MTD is a design motivation, not evidence that higher doses are safe. Sentinel timing, delayed toxicity, efficacy and RP2D decisions are not modeled.
 
-The app now defaults to **(0.05, 0.10, 0.20, 0.30)** for the Dose 4 true-MTD scenario. Each designated MTD in the Dose 1-4 scenarios has true DLT probability **0.30**, matching the default target. This is a deliberate simulation choice: in general, a true MTD can be the available dose closest to the target without matching it exactly.
+The table retains the protocol numbering: **Scenario 8 is excluded**, leaving nine scenarios. Default target is 0.30.
 
-Use four doses, start at Dose 1, target 0.30, cohorts of 3, maximum 18 patients, stable-dose stopping limit 12, cutoff 0.90, BOLD tau 0.50, prior means 0.30, and PESS 3 at every dose. Set 10,000 trials for greater Monte Carlo precision. Both methods receive the same scenario truths. The app opens with a regenerated 500-trial analysis; the table below uses 10,000 trials and seed 20260920, so its percentages differ from the initial display. Changing the target does not automatically rewrite the scenario truths.
+| Scenario | Dose 1 | Dose 2 | Dose 3 | Dose 4 | Primary displayed endpoint |
+|---|---:|---:|---:|---:|---|
+| 1 | 0.30 | 0.40 | 0.50 | 0.60 | Select Dose 1 |
+| 2 | 0.15 | 0.30 | 0.45 | 0.60 | Select Dose 2 |
+| 3 | 0.05 | 0.15 | 0.30 | 0.45 | Select Dose 3 |
+| 4 | 0.05 | 0.10 | 0.20 | 0.30 | Select Dose 4 |
+| 5 | 0.05 | 0.10 | 0.15 | 0.20 | Select Dose 4 (highest available) |
+| 6 | 0.45 | 0.55 | 0.65 | 0.75 | No dose recommendation |
+| 7 | 0.15 | 0.20 | 0.25 | 0.30 | Select Dose 4 |
+| 9 | 0.30 | 0.30 | 0.30 | 0.30 | Select any dose 1-4 (all at target) |
+| 10 | 0.05 | 0.05 | 0.05 | 0.05 | Select any dose 1-4 (all below target) |
 
-| True state | Default DLT probabilities |
-|---|---|
-| No safe dose (<1) | 0.45, 0.50, 0.55, 0.60 |
-| Dose 1 | 0.30, 0.40, 0.50, 0.60 |
-| Dose 2 | 0.10, 0.30, 0.40, 0.50 |
-| Dose 3 | 0.05, 0.10, 0.30, 0.40 |
-| Dose 4 | 0.05, 0.10, 0.20, 0.30 |
-| All below target (>4) | 0.03, 0.05, 0.10, 0.15 |
+Scenarios 9 and 10 have **no unique true MTD**. Scenario 10's endpoint follows the requested any-dose metric; Dose 4 selection is also available in the full selection data. An above-range label never authorizes an untested Dose 5. Scenario 5's Dose 4 endpoint is a highest-available-dose convention. Do not compare different endpoint types as though they measured the same accuracy.
 
-### Selected results: Dose 1 through above Dose 4
+### Nine-scenario performance
 
-![Selection accuracy for Dose 1 through all doses below target](docs/figures/mtd_selection_accuracy_upper_scenarios.png)
+![Nine protocol scenarios, excluding Scenario 8](docs/figures/protocol_nine_scenarios.png)
 
-This is a **selected subset** of a six-scenario, 10,000-trial-per-scenario analysis, not clinical outcomes. Complete results, including the all-doses-too-toxic scenario, true DLT vectors, and overdose allocation, are in [the results CSV](docs/data/car_t_six_scenarios.csv).
+[Performance table with MCSE](docs/protocol_results.md) | [Full-precision performance CSV](docs/data/protocol_performance.csv) | [Every dose and no-dose selection](docs/data/protocol_selections.csv) | [Allocation](docs/data/protocol_allocations.csv) | [Exact parameters](docs/data/protocol_parameters.csv)
 
-| True state | True DLT probabilities | Original BOLD | Experimental BOLD | BOIN |
-|---|---|---:|---:|---:|
-| Dose 1 | 0.30, 0.40, 0.50, 0.60 | 44.33% | 47.26% | 47.06% |
-| Dose 2 | 0.10, 0.30, 0.40, 0.50 | 44.56% | 46.64% | 42.38% |
-| Dose 3 | 0.05, 0.10, 0.30, 0.40 | 48.06% | 49.03% | 40.27% |
-| Dose 4 | 0.05, 0.10, 0.20, 0.30 | 60.64% | 57.37% | 50.83% |
-| All below target (>4) | 0.03, 0.05, 0.10, 0.15 | 93.49% | 90.15% | 85.34% |
+Entries below are **percentage (MCSE in percentage points)** for the endpoint specified in the scenario table.
 
-**Original BOLD had higher correct-selection rates than BOIN at Dose 2, Dose 3, Dose 4, and in the all-below-target scenario** in this rerun. The advantages were 2.18, 7.79, 9.81, and 8.15 percentage points, respectively. For `>4`, success means selecting the highest available dose, not identifying an untested dose above Dose 4.
+| Scenario | BOLD | BOLD-exp | BOIN | iBOIN (independent) |
+|---|---:|---:|---:|---:|
+| S1 | 45.64 (0.50) | 51.07 (0.50) | 47.99 (0.50) | 49.12 (0.50) |
+| S2 | 49.72 (0.50) | 49.50 (0.50) | 43.33 (0.50) | 42.31 (0.49) |
+| S3 | 50.77 (0.50) | 52.27 (0.50) | 40.54 (0.49) | 42.77 (0.49) |
+| S4 | 61.88 (0.49) | 57.87 (0.49) | 50.21 (0.50) | 49.01 (0.50) |
+| S5 | 81.35 (0.39) | 74.65 (0.44) | 69.37 (0.46) | 68.66 (0.46) |
+| S6 | 41.07 (0.49) | 43.73 (0.50) | 61.33 (0.49) | 61.33 (0.49) |
+| S7 | 47.12 (0.50) | 33.00 (0.47) | 30.05 (0.46) | 29.13 (0.45) |
+| S9 | 90.34 (0.30) | 87.35 (0.33) | 73.02 (0.44) | 73.02 (0.44) |
+| S10 | 99.98 (0.01) | 99.97 (0.02) | 99.20 (0.09) | 99.20 (0.09) |
 
-The advantage is scenario-dependent: when all doses were too toxic, original BOLD correctly selected no dose in 39.77% of simulations versus 61.15% for BOIN; at true Dose 1, rates were 44.33% versus 47.06%. At Dose 2, overdose allocation was 41.36% for original BOLD versus 21.84% for BOIN; at Dose 3, 29.05% versus 14.04%. Consider accuracy alongside safety, allocation, and sample size, not as universal superiority. Accuracy Monte Carlo standard errors are approximately 0.25-0.50 percentage points.
+All four methods are rerun locally with **10,000 trials per scenario**, start Dose 1, cohorts of 3, maximum N 18, stable-dose limit 12, target 0.30 and **cutoff 0.90 at every dose**. Prior means are 0.30 and PESS 3 at all doses for BOLD and iBOIN. BOLD tau is 0.50, BOLD-exp tau is 0.49. iBOIN final-selection priors are on. Scenario seeds are 20260920 plus 1000 times the row position in the nine-scenario grid. Thus these results need not equal earlier single-scenario runs.
 
-**Experimental BOLD is a separate research variant**, not the published BOLD method and not an app option. It lowers the Dose 1 cutoff to 0.85 and changes tau from 0.50 to 0.49 after any DLT; other cutoffs remain 0.90. The app cannot reproduce this dynamic tau rule by setting a constant tau. This figure is a saved standalone analysis, not a new run of the current app. Labels use consistent rounding from the CSV (90.15% displays as 90.2%).
+Error bars show +/- 1.96 MCSE, not patient variability or uncertainty in the true toxicity probabilities. Full patient and safety summaries are included; any apparent selection advantage is scenario-dependent, not universal superiority. Review above-target patient allocation as well as selection percentages.
 
-Reproduce all 10,000-trial comparisons and the figure (the experimental engine is isolated from the app):
+In these matched-safety runs, BOLD selected the target more often than BOIN and independently implemented iBOIN in scenarios 2-4 and 7. For example, Scenario 4 rates were 61.88%, 50.21% and 49.01%, respectively. Conversely, in the all-toxic Scenario 6, BOLD recommended no dose less often (41.07% versus 61.33% for both interval designs). BOLD also allocated more patients above target in scenarios 1-3. The full grid is presented to retain these trade-offs.
 
-```r
-source("docs/run_car_t.R")
-```
+### Outcome definitions
 
-Recreate only the figure from saved results:
-
-```r
-source("docs/plot_car_t.R")
-```
-
-## Methods and limitations
-
-See [METHODS_AUDIT.md](METHODS_AUDIT.md) for original source-parity checks and their limits. The current app includes configurable dose counts and BOLD priors, cutoffs, and stopping limits with regression tests; these are not independent clinical validation of all configurations. Prespecify and clinically justify simulation truths. Do not tune parameters solely to make one design outperform another.
-
-Default scenario rates are assumptions, not patient estimates or values copied from the paper. Overdose allocation here means the proportion of simulated participants treated above the designated true MTD, not the observed DLT rate. The paper's upper delta refers to the dose above the MTD; separation from the dose below is different.
-
-This app is not evidence of FDA approval or readiness for clinical deployment. Regulatory use requires study-team approval and independent statistical and code review. Do not upload real patient data to the public app.
+- Selection endpoint: number of trials meeting the table's endpoint divided by simulated trials.
+- MCSE (percentage points): `100 * sqrt(p * (1-p) / R)`.
+- Mean N and SD N: mean and sample SD of enrolled patients across trials.
+- Mean DLTs: average observed DLT count per trial.
+- Overdose allocation: total patients assigned to doses with **true DLT probability above the target**, divided by total patients across simulations. It is not the DLT rate or the fraction of trials selecting an excessive dose.
 
 ## Sources and citation
 
-- [BOLD methods paper](https://doi.org/10.1002/sim.70456)
-- [BOLD authors' code](https://github.com/hiddenmanna1996/BOLD)
-- [BOIN R package](https://cran.r-project.org/package=BOIN)
-- [MD Anderson BOIN app](https://biostatistics.mdanderson.org/shinyapps/BOIN/)
+- [BOLD methods paper](https://doi.org/10.1002/sim.70456) and [authors' code](https://github.com/hiddenmanna1996/BOLD).
+- [BOIN R package](https://cran.r-project.org/package=BOIN).
+- [iBOIN methods: Zhou et al.](https://arxiv.org/abs/2004.12972).
+- [Official iBOIN app](https://biostatistics.mdanderson.org/shinyapps/iBOIN/) and [prior-based final-selection guide](https://biostatistics.mdanderson.org/shinyapps/iBOIN/iBOINprior_for_MTD.pdf).
 
-Guo W, Wang G-M, Tatsuoka C. *Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator*. Original archived release: Zenodo; 2026. [https://doi.org/10.5281/zenodo.22867493](https://doi.org/10.5281/zenodo.22867493).
+Guo W, Wang G-M, Tatsuoka C. *Bayesian Ordered Lattice Design (BOLD) Phase I Trial Simulator*. Original archive: Zenodo; 2026. [doi:10.5281/zenodo.22867493](https://doi.org/10.5281/zenodo.22867493).
 
-**Archive notice:** published archives predate the September 22 default correction and do not contain these regenerated results. For the current corrected app, also cite this GitHub repository with the exact commit used and access date. Do not describe the original DOI as containing the corrected software. No additional archived release was created for this correction.
-
-Wang G-M, Tatsuoka C. Bayesian Ordered Lattice Design for Phase I Clinical Trials. *Statistics in Medicine*. 2026;45(6-7):e70456. https://doi.org/10.1002/sim.70456.
+**The original DOI does not contain this update.** Until a new archive is published, cite this repository with the exact commit and access date for the changed software. Existing DOI-linked files are not silently replaced. Regulatory or clinical use requires independent statistical and code review.

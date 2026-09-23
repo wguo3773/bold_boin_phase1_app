@@ -36,6 +36,21 @@ default_scenarios <- function(n_doses = 4L) {
   )
 }
 
+protocol_scenarios <- function() {
+  data.frame(scenario=paste0("S",c(1:7,9,10)),
+    interpretation=c(paste("Target at Dose",1:4),"All below target",
+      "All doses overly toxic","Shallow gradient; target at Dose 4",
+      "All doses at target","Flat low-toxicity profile"),
+    dose_1=c(.30,.15,.05,.05,.05,.45,.15,.30,.05),
+    dose_2=c(.40,.30,.15,.10,.10,.55,.20,.30,.05),
+    dose_3=c(.50,.45,.30,.20,.15,.65,.25,.30,.05),
+    dose_4=c(.60,.60,.45,.30,.20,.75,.30,.30,.05),
+    true_state=c("1","2","3","4",">4","<1","4","1",">4"),
+    endpoint=c(paste("Select Dose",1:4),"Select Dose 4","No dose",
+      "Select Dose 4","Any dose 1-4","Any dose 1-4"),
+    stringsAsFactors=FALSE)
+}
+
 validate_scenarios <- function(x, phi = 0.30) {
   dose_cols <- grep("^dose_[0-9]+$", names(x), value = TRUE)
   n_doses <- length(dose_cols)
@@ -51,8 +66,15 @@ validate_scenarios <- function(x, phi = 0.30) {
     stop("True DLT rates must be non-decreasing across doses.")
   }
   for (i in seq_len(nrow(x))) {
-    state <- x$scenario[i]
+    state <- if ("true_state" %in% names(x)) x$true_state[i] else x$scenario[i]
     r <- rates[i, ]
+    if ("endpoint" %in% names(x) && x$endpoint[i] == "Any dose 1-4") {
+      if (x$scenario[i]=="S9" && any(abs(r-phi)>1e-10))
+        stop("Scenario 9's any-target endpoint requires every dose to equal the target.")
+      if (x$scenario[i]=="S10" && !all(r<phi))
+        stop("Scenario 10 requires every dose below target.")
+      next
+    }
     if (state == "<1" && !all(r > phi)) {
       stop("In state <1, all true DLT rates must exceed the target.")
     }

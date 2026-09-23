@@ -1,0 +1,42 @@
+import {createRequire} from 'node:module';
+const require = createRequire(process.env.PLAYWRIGHT_ROOT + '/package.json');
+const {chromium} = require('playwright');
+const browser = await chromium.launch({headless:true,
+  executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+const page = await browser.newPage({viewport:{width:1440,height:1000}});
+const errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:3878',{waitUntil:'networkidle'});
+await page.locator('#accuracy_plot img').waitFor();
+await page.getByLabel('Simulation trials',{exact:true}).fill('100');
+await page.locator('input[name="methods"][value="BOLD-exp"]').check();
+await page.locator('#run').click();
+await page.getByText(/Complete: 4 dose levels; starting at Dose 1; 100 simulated trials/).waitFor({timeout:60000});
+if(await page.locator('.shiny-output-error').count()) throw new Error('Shiny output error');
+await page.screenshot({path:'results/protocol_desktop.png',fullPage:true});
+await page.getByRole('tab',{name:'Scenario definitions',exact:true}).click();
+await page.locator('#scenario_table').getByText('S10',{exact:true}).waitFor();
+if(await page.locator('#scenario_table').getByText('S8',{exact:true}).count()) throw new Error('Scenario 8 still present');
+await page.getByRole('tab',{name:'Dose selections',exact:true}).click();
+await page.locator('#selection_plot img').waitFor();
+await page.getByRole('tab',{name:'Patient allocation',exact:true}).click();
+await page.locator('#allocation_plot img').waitFor();
+await page.getByRole('tab',{name:'Run simulation',exact:true}).click();
+await page.getByLabel('Customize iBOIN prior means and PESS by dose',{exact:true}).check();
+await page.locator('#iboin_m_2').fill('6');
+await page.locator('#run').click();
+await page.waitForTimeout(3000);
+if(await page.locator('.shiny-output-error').count()) throw new Error('Shiny output error after prior change');
+const downloadPromise=page.waitForEvent('download');
+await page.locator('#download_results').click();
+const download=await downloadPromise;
+await download.saveAs('results/protocol_ui_download.zip');
+for(const width of [1440,390]) {
+  await page.setViewportSize({width,height:1000});
+  await page.waitForTimeout(1000);
+  if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)) throw new Error('Horizontal overflow '+width);
+  await page.screenshot({path:`results/protocol_${width}.png`,fullPage:true});
+}
+if(errors.length) throw new Error(errors.join('\n'));
+await browser.close();
+console.log('Protocol UI, prior controls, four-method run, export and responsive checks passed.');
