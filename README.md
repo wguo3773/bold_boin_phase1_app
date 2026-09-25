@@ -4,27 +4,20 @@ Authors: **Wanru Guo, Gi-Ming Wang, and Curtis Tatsuoka**
 
 [Public Shiny app](https://wguo3.shinyapps.io/bold_boin_phase1_app/) | [Methods audit](METHODS_AUDIT.md)
 
-Independent research software for BOLD, BOIN and iBOIN simulations. This is **not an official authors' or MD Anderson app**, and is not a validated clinical dose-assignment system. No real patient data are required.
+The public Shiny app compares BOLD and BOIN simulations. This is independent research software, **not an official authors' app** or a validated clinical dose-assignment system. No real patient data are required.
 
-**September 23 development update:** nine protocol scenarios and an independent iBOIN implementation are being validated. The public app and existing Zenodo archive may still contain the preceding version; see the publication status in the methods audit.
+The historical comparison results below are separate from the public app's available methods. See the methods audit for development and publication status.
 
 ## General use
 
 1. Choose the number of doses (2-10), starting dose, scenarios and methods. Four-dose defaults use the protocol scenarios below. Other dose counts use illustrative editable scenarios.
 2. Enter nondecreasing true DLT probabilities. These generate simulated outcomes; the methods do not know them. They are different from prior means.
 3. Set the target DLT probability, cohort size, total patient maximum, per-dose stopping limit, toxicity cutoff, trial count and seed. The matched stopping rule requires reaching the dose limit **and** recommending that same dose again.
-4. Set BOLD's tau, prior means and PESS. Checked dose-specific controls override the corresponding common BOLD values. BOIN/iBOIN retain the shared cutoff and stopping limit.
-5. For iBOIN, set its separate prior means and **integer PESS**, optionally by dose. Prior means default to the target, PESS to 3. Its final-selection prior option defaults to on. BOIN has no favored-dose prior. iBOIN PESS 0 at every dose reduces to the implemented BOIN rules.
-6. Optionally include BOLD-exp: **constant tau 0.49**, with all other BOLD settings unchanged. This replaces the older experimental rule that changed Dose 1's cutoff and switched tau after a DLT. It is a research sensitivity analysis, not the published BOLD method.
-7. Run the comparison. Review the named endpoint, MCSE, full selection distribution, patient allocation, DLT count and overdose allocation. Download the CSV bundle for inputs and outputs. Edited inputs do not change an already displayed result until rerun.
+4. Set BOLD's tau, prior means and PESS. Checked dose-specific controls override the corresponding common BOLD values. BOIN retains the shared cutoff and stopping limit and has no favored-dose prior.
+5. To explore a BOLD sensitivity setting, set tau to 0.49 instead of 0.50 while keeping other settings unchanged. Record the settings with each run; this is a research sensitivity analysis, not the published default.
+6. Run the comparison. Review the named endpoint, MCSE, full selection distribution, patient allocation, DLT count and overdose allocation. Download the CSV bundle for inputs and outputs. Edited inputs do not change an already displayed result until rerun.
 
 With defaults, BOLD's prior is Beta(0.9,2.1): prior mean 0.30 and PESS 3. Favoring a dose by increasing PESS does not change the actual cohort size. These are weak priors, not an absence of prior information.
-
-### iBOIN implementation and safety
-
-This repository implements the published prior-weight and decision-boundary equations, with prior-augmented final estimates, inverse-variance isotonic regression, and the BOIN tie convention. **The uniform Beta(1,1) safety check uses the selected shared cutoff at every dose, during allocation and at final selection.** Safety exclusions override final-selection priors. This is an explicit matched-safety implementation, not a claim of exact MD Anderson web-app equivalence.
-
-Earlier official-web-app iBOIN results are **not reused as matched-0.90 results**. During verification, the app's decision table and simulation/final-selection behavior did not agree on safety handling. See the [audit](docs/IBOIN_VALIDATION.md). Exact flat truths are supported locally without perturbing their probabilities.
 
 ### Run locally
 
@@ -38,14 +31,14 @@ From the repository directory, run tests and reproduce the protocol comparison:
 ```r
 for (f in list.files("tests", pattern = "[.]R$", full.names = TRUE)) source(f)
 source("docs/run_protocol.R")  # 10,000 trials per scenario and method
-source("docs/plot_word_results.R") # rebuild all 13 Word-document charts
+source("docs/plot_word_results.R") # rebuild the displayed Word-document charts
 ```
 
 ## CD229 CAR-T design example
 
 These are **hypothetical protocol stress tests**, not CD229 toxicity estimates or clinical validation. The four dose levels are 0.5, 1, 2 and 4 million viable CAR-positive T cells/kg. Interest in a higher MTD is a design motivation, not evidence that higher doses are safe. Sentinel timing, delayed toxicity, efficacy and RP2D decisions are not modeled.
 
-The app's default grid retains nine protocol scenarios, excluding Scenario 8. The complete historical Word-document charts below additionally include Scenario 8, with its separate non-MTD endpoints. Default target is 0.30.
+The app's default grid retains nine protocol scenarios, excluding Scenario 8. The historical Word-document charts below additionally include Scenario 8's selection distribution. Default target is 0.30.
 
 | Scenario | Dose 1 | Dose 2 | Dose 3 | Dose 4 | Primary displayed endpoint |
 |---|---:|---:|---:|---:|---|
@@ -63,13 +56,13 @@ Scenarios 9 and 10 have **no unique true MTD**. Scenario 10's endpoint follows t
 
 ## All reported scenario results
 
-All **13 result tables** from **ALL SCENARIOS.docx** are shown below as thin-bar charts, including every reported favored-dose setting. Expand each chart's table to see the exact percentages and MCSEs. No results have been rerun or substituted.
+The **12 displayed result tables** from **ALL SCENARIOS.docx** are shown below as thin-bar charts, including their reported favored-dose settings. Expand each chart's table to see the exact percentages and MCSEs. No results have been rerun or substituted.
 
 These are historical reported values, not outputs of the independent local iBOIN engine. Official iBOIN safety equivalence to a uniform 0.90 cutoff remains unverified. iBOIN is unavailable for Scenarios 9 and 10; it is not represented as zero. BOIN is unchanged across prior settings within each scenario.
 
 Bar labels show the exact source percentage; error bars show +/- 1.96 times the reported MCSE. Rounding is retained. These intervals are descriptive Monte Carlo intervals, not clinical uncertainty intervals.
 
-Scenarios 1 and 2 contain no favored-Dose-4 row in the source; none has been invented. Scenario 8 is included here to reproduce ALL source results, but is not an MTD-accuracy scenario. Its above-target-selection endpoint is undesirable, so lower is better. For Scenario 10, any-dose selection is not target-dose accuracy: all doses are below target.
+Scenarios 1 and 2 contain no favored-Dose-4 row in the source; none has been invented. Scenario 8 shows the selection distribution, not MTD accuracy. For Scenario 10, any-dose selection is not target-dose accuracy: all doses are below target.
 
 The source's Scenario 8 iBOIN selection distribution sums to 100.02% at its displayed precision; these values are retained without normalization. The source's narrative conclusions are not copied as instructions or treated as verified superiority claims.
 
@@ -221,25 +214,6 @@ True DLT probabilities: **(0.05, 0.10, 0.45, 0.60)**.
 | iBOIN | 0.02 (0.01) | 0.80 (0.09) | 44.30 (0.50) | 50.00 (0.50) | 4.90 (0.22) |
 | BOLD | 0.00 (0.00) | 0.68 (0.08) | 49.19 (0.50) | 45.43 (0.50) | 4.70 (0.21) |
 | BOLD-exp | 0.03 (0.02) | 0.46 (0.07) | 49.66 (0.50) | 44.18 (0.50) | 5.67 (0.23) |
-
-</details>
-
-### Scenario 8: Above-target selection (Dose 3 or 4)
-
-True DLT probabilities: **(0.05, 0.10, 0.45, 0.60)**.
-
-![Scenario 8: Above-target selection (Dose 3 or 4)](docs/figures/word_09_scenario_8.png)
-
-<details>
-<summary>Exact source values: percentage (MCSE)</summary>
-
-| Prior | BOIN | iBOIN | BOLD | BOLD-exp |
-|---|---|---|---|---|
-| No favored dose | 38.60 (0.49) | 54.90 (0.50) | 50.13 (0.50) | 49.85 (0.50) |
-| Favor Dose 1 | 38.60 (0.49) | 48.20 (0.50) | 46.00 (0.50) | 44.45 (0.50) |
-| Favor Dose 2 | 38.60 (0.49) | 45.30 (0.50) | 41.87 (0.49) | 44.79 (0.50) |
-| Favor Dose 3 | 38.60 (0.49) | 54.90 (0.50) | 54.30 (0.50) | 59.83 (0.49) |
-| Favor Dose 4 | 38.60 (0.49) | 54.80 (0.50) | 50.16 (0.50) | 49.85 (0.50) |
 
 </details>
 

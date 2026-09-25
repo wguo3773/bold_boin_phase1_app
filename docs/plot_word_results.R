@@ -5,6 +5,7 @@ d$error <- as.numeric(d$mcse)
 colors <- c(BOIN="#C76D00", iBOIN="#4267A9", BOLD="#087F8C", "BOLD-exp"="#AD437D")
 dir.create("docs/figures", recursive=TRUE, showWarnings=FALSE)
 for (key in unique(d$figure)) {
+  if (key == "word_09_scenario_8") next
   z <- d[d$figure == key, ]
   z$category <- factor(z$category, levels=unique(z$category))
   z$method <- factor(z$method, levels=names(colors)[names(colors) %in% z$method])

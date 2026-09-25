@@ -1,12 +1,12 @@
 ## All reported scenario results
 
-All **13 result tables** from **ALL SCENARIOS.docx** are shown below as thin-bar charts, including every reported favored-dose setting. Expand each chart's table to see the exact percentages and MCSEs. No results have been rerun or substituted.
+The **12 displayed result tables** from **ALL SCENARIOS.docx** are shown below as thin-bar charts, including their reported favored-dose settings. Expand each chart's table to see the exact percentages and MCSEs. No results have been rerun or substituted.
 
 These are historical reported values, not outputs of the independent local iBOIN engine. Official iBOIN safety equivalence to a uniform 0.90 cutoff remains unverified. iBOIN is unavailable for Scenarios 9 and 10; it is not represented as zero. BOIN is unchanged across prior settings within each scenario.
 
 Bar labels show the exact source percentage; error bars show +/- 1.96 times the reported MCSE. Rounding is retained. These intervals are descriptive Monte Carlo intervals, not clinical uncertainty intervals.
 
-Scenarios 1 and 2 contain no favored-Dose-4 row in the source; none has been invented. Scenario 8 is included here to reproduce ALL source results, but is not an MTD-accuracy scenario. Its above-target-selection endpoint is undesirable, so lower is better. For Scenario 10, any-dose selection is not target-dose accuracy: all doses are below target.
+Scenarios 1 and 2 contain no favored-Dose-4 row in the source; none has been invented. Scenario 8 shows the selection distribution, not MTD accuracy. For Scenario 10, any-dose selection is not target-dose accuracy: all doses are below target.
 
 The source's Scenario 8 iBOIN selection distribution sums to 100.02% at its displayed precision; these values are retained without normalization. The source's narrative conclusions are not copied as instructions or treated as verified superiority claims.
 
@@ -158,25 +158,6 @@ True DLT probabilities: **(0.05, 0.10, 0.45, 0.60)**.
 | iBOIN | 0.02 (0.01) | 0.80 (0.09) | 44.30 (0.50) | 50.00 (0.50) | 4.90 (0.22) |
 | BOLD | 0.00 (0.00) | 0.68 (0.08) | 49.19 (0.50) | 45.43 (0.50) | 4.70 (0.21) |
 | BOLD-exp | 0.03 (0.02) | 0.46 (0.07) | 49.66 (0.50) | 44.18 (0.50) | 5.67 (0.23) |
-
-</details>
-
-### Scenario 8: Above-target selection (Dose 3 or 4)
-
-True DLT probabilities: **(0.05, 0.10, 0.45, 0.60)**.
-
-![Scenario 8: Above-target selection (Dose 3 or 4)](figures/word_09_scenario_8.png)
-
-<details>
-<summary>Exact source values: percentage (MCSE)</summary>
-
-| Prior | BOIN | iBOIN | BOLD | BOLD-exp |
-|---|---|---|---|---|
-| No favored dose | 38.60 (0.49) | 54.90 (0.50) | 50.13 (0.50) | 49.85 (0.50) |
-| Favor Dose 1 | 38.60 (0.49) | 48.20 (0.50) | 46.00 (0.50) | 44.45 (0.50) |
-| Favor Dose 2 | 38.60 (0.49) | 45.30 (0.50) | 41.87 (0.49) | 44.79 (0.50) |
-| Favor Dose 3 | 38.60 (0.49) | 54.90 (0.50) | 54.30 (0.50) | 59.83 (0.49) |
-| Favor Dose 4 | 38.60 (0.49) | 54.80 (0.50) | 50.16 (0.50) | 49.85 (0.50) |
 
 </details>
 

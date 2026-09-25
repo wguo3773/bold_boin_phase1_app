@@ -49,6 +49,8 @@ for index, (table, (scenario, endpoint, rates)) in enumerate(zip(tables, specs),
             records.append(dict(figure=key, scenario=scenario, endpoint=endpoint,
                 rates=rates, category=category, method=method, display=value,
                 percentage=match[1], mcse=match[2]))
+    if index == 9:
+        continue  # Retain source data, but omit the above-target selection presentation.
     sections.extend([f"### Scenario {scenario}: {endpoint}", "",
         f"True DLT probabilities: **({rates})**.", "",
         f"![Scenario {scenario}: {endpoint}](docs/figures/{key}.png)", "",
@@ -68,10 +70,10 @@ with (data / "word_all_results.csv").open("w", newline="") as handle:
     "note": "Exact transcription of reported results; not a validation of simulation engines or safety equivalence."
 }, indent=2) + "\n")
 intro = ["## All reported scenario results", "",
-    "All **13 result tables** from **ALL SCENARIOS.docx** are shown below as thin-bar charts, including every reported favored-dose setting. Expand each chart's table to see the exact percentages and MCSEs. No results have been rerun or substituted.", "",
+    "The **12 displayed result tables** from **ALL SCENARIOS.docx** are shown below as thin-bar charts, including their reported favored-dose settings. The separate Scenario 8 above-target selection section is omitted. Expand each chart's table to see the exact percentages and MCSEs. No results have been rerun or substituted.", "",
     "These are historical reported values, not outputs of the independent local iBOIN engine. Official iBOIN safety equivalence to a uniform 0.90 cutoff remains unverified. iBOIN is unavailable for Scenarios 9 and 10; it is not represented as zero. BOIN is unchanged across prior settings within each scenario.", "",
     "Bar labels show the exact source percentage; error bars show +/- 1.96 times the reported MCSE. Rounding is retained. These intervals are descriptive Monte Carlo intervals, not clinical uncertainty intervals.", "",
-    "Scenarios 1 and 2 contain no favored-Dose-4 row in the source; none has been invented. Scenario 8 is included here to reproduce ALL source results, but is not an MTD-accuracy scenario. Its above-target-selection endpoint is undesirable, so lower is better. For Scenario 10, any-dose selection is not target-dose accuracy: all doses are below target.", "",
+    "Scenarios 1 and 2 contain no favored-Dose-4 row in the source; none has been invented. Scenario 8 shows the selection distribution, not MTD accuracy. For Scenario 10, any-dose selection is not target-dose accuracy: all doses are below target.", "",
     "The source's Scenario 8 iBOIN selection distribution sums to 100.02% at its displayed precision; these values are retained without normalization. The source's narrative conclusions are not copied as instructions or treated as verified superiority claims.", "",
     "[All source values (CSV)](docs/data/word_all_results.csv) | [Source provenance](docs/data/word_source.json) | [Separate independent local reruns](docs/data/protocol_performance.csv)", ""]
 content = "\n".join(intro + sections)
