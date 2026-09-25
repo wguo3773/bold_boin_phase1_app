@@ -34,11 +34,11 @@ source("docs/run_protocol.R")  # 10,000 trials per scenario and method
 source("docs/plot_word_results.R") # rebuild the displayed Word-document charts
 ```
 
-## CD229 CAR-T design example
+## First-in-human CD229 CAR-T design example for multiple myeloma
 
-These are **hypothetical protocol stress tests**, not CD229 toxicity estimates or clinical validation. The four dose levels are 0.5, 1, 2 and 4 million viable CAR-positive T cells/kg. Interest in a higher MTD is a design motivation, not evidence that higher doses are safe. Sentinel timing, delayed toxicity, efficacy and RP2D decisions are not modeled.
+This design example supports planning for a **proposed first-in-human trial of CD229 CAR-T therapy for multiple myeloma**. These are **hypothetical protocol stress tests**, not CD229 toxicity estimates or clinical validation. The four dose levels are 0.5, 1, 2 and 4 million viable CAR-positive T cells/kg. Interest in a higher MTD is a design motivation, not evidence that higher doses are safe. Sentinel timing, delayed toxicity, efficacy and RP2D decisions are not modeled.
 
-The app's default grid retains nine protocol scenarios, excluding Scenario 8. The historical Word-document charts below additionally include Scenario 8's selection distribution. Default target is 0.30.
+The reported results cover **all 10 protocol scenarios, including Scenario 8**, as summarized below. Scenario 8 reports the full dose-selection distribution because no dose has a true DLT probability equal to the 0.30 target. The app's default nine-scenario grid is separate from this results summary.
 
 | Scenario | Dose 1 | Dose 2 | Dose 3 | Dose 4 | Primary displayed endpoint |
 |---|---:|---:|---:|---:|---|
@@ -49,6 +49,7 @@ The app's default grid retains nine protocol scenarios, excluding Scenario 8. Th
 | 5 | 0.05 | 0.10 | 0.15 | 0.20 | Select Dose 4 (highest available) |
 | 6 | 0.45 | 0.55 | 0.65 | 0.75 | No dose recommendation |
 | 7 | 0.15 | 0.20 | 0.25 | 0.30 | Select Dose 4 |
+| 8 | 0.05 | 0.10 | 0.45 | 0.60 | Selection distribution (no dose at target) |
 | 9 | 0.30 | 0.30 | 0.30 | 0.30 | Select any dose 1-4 (all at target) |
 | 10 | 0.05 | 0.05 | 0.05 | 0.05 | Select any dose 1-4 (all below target) |
 
